@@ -1,0 +1,80 @@
+.inner-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dekstop-menu-logo{
+    width: 33%;
+}
+.dekstop-menu-category{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    width: 33%;
+    padding: 0px 5px;
+}
+.dekstop-menu-category a{
+    text-decoration: none;
+    color: #111111;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    padding: 20px 5px;
+    border-bottom: solid 3px white;
+
+}
+.dekstop-menu-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 33%;
+}
+.dekstop-menu-search{
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 50px;
+    width: 50%;
+    padding: 5px;
+    margin-left: 100px;
+}
+.dekstop-menu-search input{
+    border: none;
+    background: #f5f5f5;
+    margin-left: 10px;
+    width: 50%;
+    outline: none;
+}
+.dekstop-menu-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dekstop-menu-icons a{
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.dekstop-menu-category a:hover{
+    border-bottom: solid 3px #111111;
+    transition: .3s;
+}
+.dekstop-menu-icons a:hover{
+    background: #d2d2d2;
+    padding: 5px;
+    border-radius: 50%;
+    transition: .3s;
+}
+.dekstop-menu-search:hover input{
+    background: #d2d2d2;
+    transition: .3s;
+}
+.dekstop-menu-search:hover{
+    background: #d2d2d2;
+    transition: .3s;
+}

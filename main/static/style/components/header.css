@@ -1,0 +1,35 @@
+.header{
+    background-color:#f5f5f5;
+    width: 100%;
+}
+.inner-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0px;
+}
+.header-logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-logo a{
+    margin-right: 15px;
+}
+.header-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+}
+.header-menu a{
+    text-decoration: none;
+    color: #111111;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0 5px;
+}
+.header-menu a:hover{
+    color: #686868;
+    transition: .3s;
+}

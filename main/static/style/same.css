@@ -1,0 +1,26 @@
+.container{
+    padding: 0 40px;
+}
+.section-padding{
+    padding-top: 80px;
+}
+.buttonShop{
+    text-transform: capitalize;
+    background-color: #fff;
+    color: #111111;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+.titleSection{
+    color: #111111;
+    text-transform: capitalize;
+    font-size: 28px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.buttonShop:hover{
+    background-color: #8d8d8d;
+    transition: .1s;
+}

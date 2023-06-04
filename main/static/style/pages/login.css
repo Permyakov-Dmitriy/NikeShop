@@ -1,0 +1,78 @@
+.inner-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+.inner-login h3{
+    font-size: 18px;
+    text-transform: uppercase;
+    width: 25%;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+}
+.login-form .input{
+    width: 95%;
+    border: 1px solid #e5e5e5;
+    color: #8d8d8d;
+    border-radius: 3px;
+    height: 40px;
+    margin: 5px 0;
+    padding: 0 0 0 16px;
+}
+.login-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.login-block .keepSignIn{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #8d8d8d;
+    font-weight: 500;
+}
+.login-block a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #8d8d8d;
+}
+.login-privacy{
+    padding: 0 5px;
+    text-align: center;
+    color: #8d8d8d;
+    font-size: 12px;
+    margin: 20px 0;
+}
+.login-form .button{
+    width: 100%;
+    background-color: black;
+    color: #fff;
+    border-radius: 3px;
+    height: 40px;
+    font: 14px;
+    margin: 5px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.login-member{
+    text-align: center;
+    font-size: 12px;
+    color: #8d8d8d;
+    margin-top: 20px;
+}
+.login-member a{
+    font-size: 12px;
+    color: black;
+    text-transform: capitalize;
+}
