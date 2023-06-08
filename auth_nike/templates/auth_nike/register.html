@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style/all.css">
-</head>
+{% extends 'main/head.html' %}
+
+{% block title %}
+    Registration
+{% endblock title %}
+
+{% block content %}
 <body>
     <header class="header container">
         <div class="inner-header">
@@ -18,16 +16,14 @@
             <div class="header-menu">
                 <a href="">Help</a>
                 <a href="">|</a>
-                <a href="register.html">Join us</a>
-                <a href="">|</a>
-                <a href="">Sing in</a>
+                {% include 'main/check_auth.html' %}
             </div>
         </div>
     </header> 
     <div class="desktop-menu container">
         <div class="inner-menu">
             <div class="dekstop-menu-logo">
-                <a href="index.html"><svg class="pre-logo-svg" height="60px" width="60px" fill="#111" viewBox="0 0 69 32"><path d="M68.56 4L18.4 25.36Q12.16 28 7.92 28q-4.8 0-6.96-3.36-1.36-2.16-.8-5.48t2.96-7.08q2-3.04 6.56-8-1.6 2.56-2.24 5.28-1.2 5.12 2.16 7.52Q11.2 18 14 18q2.24 0 5.04-.72z"></path></svg></a>
+                <a href="/"><svg class="pre-logo-svg" height="60px" width="60px" fill="#111" viewBox="0 0 69 32"><path d="M68.56 4L18.4 25.36Q12.16 28 7.92 28q-4.8 0-6.96-3.36-1.36-2.16-.8-5.48t2.96-7.08q2-3.04 6.56-8-1.6 2.56-2.24 5.28-1.2 5.12 2.16 7.52Q11.2 18 14 18q2.24 0 5.04-.72z"></path></svg></a>
             </div>
             <div class="dekstop-menu-category">
                 <a href="">new & featured</a>
@@ -47,43 +43,60 @@
                 </div>
             </div>    
         </div>
-    </div>  
+    </div> 
     
-    <div class="login container">
-        <div class="inner-login">
-            <div class="login-logo">
+    <div class="register container">
+        <div class="inner-register">
+            <div class="register-logo">
                 <a href=""><svg class="pre-logo-svg" height="60px" width="60px" fill="#111" viewBox="0 0 69 32"><path d="M68.56 4L18.4 25.36Q12.16 28 7.92 28q-4.8 0-6.96-3.36-1.36-2.16-.8-5.48t2.96-7.08q2-3.04 6.56-8-1.6 2.56-2.24 5.28-1.2 5.12 2.16 7.52Q11.2 18 14 18q2.24 0 5.04-.72z"></path></svg></a>
             </div>
-            <h3>your account for everything nike</h3>
-            <form class="login-form" action="">
+            <h3>become a nike member</h3>
+            <p class="register-text">Create your Nike Member profile and get first access to the very best of Nike products, inspiration and community.</p>
+            <form class="register-form" method="post">
+                {% csrf_token %}
                 <fieldset class="fieldset">
                     <input class="input" type="text" name="email" placeholder="Email address">
                 </fieldset>
+
                 <fieldset class="fieldset">
                     <input class="input" type="password" name="password" placeholder="Password">
                 </fieldset>
 
-                <div class="login-block">
-                    <label for="" class="keepSignIn">
-                        <input type="checkbox">
-                        <span>keep me signed in</span>
-                    </label>
-                    <a href="">forgot password?</a>
-                </div>
-
-                <div class="login-privacy">
-                    <p>By logging in, you agree to Nike's Privacy Policy and Terms of Use.</p>
-                </div>            
-
                 <fieldset class="fieldset">
-                    <button class="button" type="submit">Sign in</button>
+                    <input class="input" type="text" name="first_name" placeholder="First Name">
                 </fieldset>
 
-                <p class="login-member">Not a member? <a href="register.html">Join us</a></p>
+                <fieldset class="fieldset">
+                    <input class="input" type="text" name="last_name" placeholder="Last Name">
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <input class="input" type="date" name="birth_day" placeholder="Date of Birth">
+                    <p>Get a Nike Member Reward every year on your Birthday.</p>
+                </fieldset>
+                
+                <!-- <fieldset class="fieldset">
+                    <input class="input" type="text" name="text" placeholder="Country">
+                </fieldset> -->
+
+                <!-- <fieldset class="fieldset userGender">
+                    <input class="input" type="button" name="male" value="Male">
+                    <input class="input" type="button" name="female" value="female">
+                </fieldset> -->
+
+                <!-- <div class="register-block">
+                    <label for="" class="checkSignUp">
+                        <input type="checkbox">
+                        <span>Sign up for emails to get updates from Nike on products, offers, and your Member benefits</span>
+                    </label>
+                </div>           -->
+                <p class="register-privacy" style="color: red; font-size: 16px;">{{ err }}</p>
+                <button class="button" type="submit">Join us</button>
+
+                <p class="register-member">Alredy a member? <a href="/auth/">Sign in</a></p>
             </form>
         </div>
     </div>
-
 
 
     <footer class="footer">
@@ -144,5 +157,7 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
+{% endblock content %}

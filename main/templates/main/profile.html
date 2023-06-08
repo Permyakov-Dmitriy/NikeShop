@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nike</title>
-    <link rel="stylesheet" href="static/style/all.css">
-</head>
+{% extends 'main/head.html' %}
+
+{% block title %}
+    Profile
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+
 <body>
     <header class="header container">
         <div class="inner-header">
             <div class="header-logo">
-                <a href="profile.html"><svg height="24px" width="24px" fill="#111" viewBox="0 0 26 32"><path d="M14.4 5.52v-.08q0-.56.36-1t.92-.44 1 .36.48.96-.36 1-.96.4l-.24.08.08.12-.08.44-.16 1.28q.08.08.08.16l-.16.8q-.08.16-.16.24l-.08.32q-.16.64-.28 1.04t-.2.64V12q-.08.4-.12.64t-.28.8q-.16.32 0 1.04l.08.08q0 .24.2.56t.2.56q.08 1.6-.24 2.72l.16.48q.96.48.56 1.04l.4.16q.96.48 1.36.84t.8.76q.32.08.48.24l.24.08q1.68 1.12 3.36 2.72l.32.24v.08l-.08.16.24.16h.08q.24.16.32.16h.08q.08 0 .16-.08l.16-.08q.16-.16.32-.24h.32q.08 0 0 .08l-.32.16-.4.48h.56l.56.08q.24-.08.4-.16l.4-.24q.24-.08.48.16h.08q.08.08-.08.24l-.96.88q-.4.32-.72.4l-1.04.72q-.08.08-.16 0l-.24-.32-.16-.32-.2-.28-.24-.32-.2-.24-.16-.2-.32-.24q-.16 0-.32-.08l-1.04-.8q-.24 0-.56-.24-1.2-1.04-1.6-1.28l-.48-.32-.96-.16q-.48-.08-1.28-.48l-.64-.32q-.64-.32-.88-.32l-.32-.16q-.32-.08-.48-.16l-.16-.16q-.16 0-.32.08l-1.6.8-2 .88q-.8.64-1.52 1.04l-.88.4-1.36.96q-.16.16-.32 0l-.16.16q-.24.08-.32.08l-.32.16v.16h-.16l-.16.24q-.16.32-.32.36t-.2.12-.08.12l-.16.16-.24.16-.36-.04-.48.08-.32.08q-.4.08-.64-.12t-.4-.6q-.16-.24.16-.4l.08-.08q.08-.08.24-.08h.48L1.6 26l.32-.08q0-.16.08-.24.08-.08.24-.08v-.08q-.08-.16-.08-.32-.08-.16-.04-.24t.08-.08h.04l.08.24q.08.4.24.24l.08-.16q.08-.16.24-.16l.16.16.16-.16-.08-.08q0-.08.08-.08l.32-.32q.4-.48.96-.88 1.12-.88 2.4-1.36.4-.4.88-.4.32-.56.96-1.2.56-.4.8-.56.16-.32.4-.32H10l.16-.16q.16-.08.24-.16v-.4q0-.4.08-.64t.4-.24l.32-.32q-.16-.32-.16-.72h-.08q-.16-.24-.16-.48-.24-.4-.32-.64h-.24q-.08.24-.4.32l-.08.16q-.32.56-.56.84t-.88.68q-.4.4-.56.88-.08.24 0 .48l-.08.16h.08q0 .16.08.16h.08q.16.08.16.2t-.24.08-.36-.16-.2-.12l-.24.24q-.16.24-.32.2t-.08-.12l.08-.08q.08-.16 0-.16l-.64.16q-.08.08-.2 0t.04-.16l.4-.16q0-.08-.08-.08-.32.16-.64.08l-.4-.08-.08-.08q0-.08.08-.08.32.08.8-.08l.56-.24.64-.72.08-.16q.32-.64.68-1.16t.76-.84l.08-.32q.16-.32.32-.56t.4-.64l.24-.32q.32-.48.72-.48l.24-.24q.08-.08.08-.24l.16-.16-.08-.08q-.48-.4-.48-.72-.08-.56.36-.96t.88-.36.68.28l.16.16q.08 0 .08.08l.32.16v.24q.16.16.16.24.16-.24.48-.56l.4-1.28q0-.32.16-.64l.16-.24v-.16l.24-.96h.16l.24-.96q.08-.24 0-.56l-.32-.8z"></path></svg></a>
+                <a href=""><svg height="24px" width="24px" fill="#111" viewBox="0 0 26 32"><path d="M14.4 5.52v-.08q0-.56.36-1t.92-.44 1 .36.48.96-.36 1-.96.4l-.24.08.08.12-.08.44-.16 1.28q.08.08.08.16l-.16.8q-.08.16-.16.24l-.08.32q-.16.64-.28 1.04t-.2.64V12q-.08.4-.12.64t-.28.8q-.16.32 0 1.04l.08.08q0 .24.2.56t.2.56q.08 1.6-.24 2.72l.16.48q.96.48.56 1.04l.4.16q.96.48 1.36.84t.8.76q.32.08.48.24l.24.08q1.68 1.12 3.36 2.72l.32.24v.08l-.08.16.24.16h.08q.24.16.32.16h.08q.08 0 .16-.08l.16-.08q.16-.16.32-.24h.32q.08 0 0 .08l-.32.16-.4.48h.56l.56.08q.24-.08.4-.16l.4-.24q.24-.08.48.16h.08q.08.08-.08.24l-.96.88q-.4.32-.72.4l-1.04.72q-.08.08-.16 0l-.24-.32-.16-.32-.2-.28-.24-.32-.2-.24-.16-.2-.32-.24q-.16 0-.32-.08l-1.04-.8q-.24 0-.56-.24-1.2-1.04-1.6-1.28l-.48-.32-.96-.16q-.48-.08-1.28-.48l-.64-.32q-.64-.32-.88-.32l-.32-.16q-.32-.08-.48-.16l-.16-.16q-.16 0-.32.08l-1.6.8-2 .88q-.8.64-1.52 1.04l-.88.4-1.36.96q-.16.16-.32 0l-.16.16q-.24.08-.32.08l-.32.16v.16h-.16l-.16.24q-.16.32-.32.36t-.2.12-.08.12l-.16.16-.24.16-.36-.04-.48.08-.32.08q-.4.08-.64-.12t-.4-.6q-.16-.24.16-.4l.08-.08q.08-.08.24-.08h.48L1.6 26l.32-.08q0-.16.08-.24.08-.08.24-.08v-.08q-.08-.16-.08-.32-.08-.16-.04-.24t.08-.08h.04l.08.24q.08.4.24.24l.08-.16q.08-.16.24-.16l.16.16.16-.16-.08-.08q0-.08.08-.08l.32-.32q.4-.48.96-.88 1.12-.88 2.4-1.36.4-.4.88-.4.32-.56.96-1.2.56-.4.8-.56.16-.32.4-.32H10l.16-.16q.16-.08.24-.16v-.4q0-.4.08-.64t.4-.24l.32-.32q-.16-.32-.16-.72h-.08q-.16-.24-.16-.48-.24-.4-.32-.64h-.24q-.08.24-.4.32l-.08.16q-.32.56-.56.84t-.88.68q-.4.4-.56.88-.08.24 0 .48l-.08.16h.08q0 .16.08.16h.08q.16.08.16.2t-.24.08-.36-.16-.2-.12l-.24.24q-.16.24-.32.2t-.08-.12l.08-.08q.08-.16 0-.16l-.64.16q-.08.08-.2 0t.04-.16l.4-.16q0-.08-.08-.08-.32.16-.64.08l-.4-.08-.08-.08q0-.08.08-.08.32.08.8-.08l.56-.24.64-.72.08-.16q.32-.64.68-1.16t.76-.84l.08-.32q.16-.32.32-.56t.4-.64l.24-.32q.32-.48.72-.48l.24-.24q.08-.08.08-.24l.16-.16-.08-.08q-.48-.4-.48-.72-.08-.56.36-.96t.88-.36.68.28l.16.16q.08 0 .08.08l.32.16v.24q.16.16.16.24.16-.24.48-.56l.4-1.28q0-.32.16-.64l.16-.24v-.16l.24-.96h.16l.24-.96q.08-.24 0-.56l-.32-.8z"></path></svg></a>
                 <a href=""><svg height="24px" width="24px" fill="#111" viewBox="0 0 39 33"><path d="M10.94 25.626l-4.236-5.501L.201 22.28l3.734-5.756L.11 10.777l6.59 2.031 4.026-5.474.14 6.785 6.64 2.175-6.594 2.446.028 6.886zm.824 7.239l13.952-16.393L11.806.107h11.697l14.871 16.389-14.8 16.369h-11.81z"></path></svg></a>
             </div>
 
@@ -25,7 +25,7 @@
     <div class="desktop-menu container">
         <div class="inner-menu">
             <div class="dekstop-menu-logo">
-                <a href="index.html"><svg class="pre-logo-svg" height="60px" width="60px" fill="#111" viewBox="0 0 69 32"><path d="M68.56 4L18.4 25.36Q12.16 28 7.92 28q-4.8 0-6.96-3.36-1.36-2.16-.8-5.48t2.96-7.08q2-3.04 6.56-8-1.6 2.56-2.24 5.28-1.2 5.12 2.16 7.52Q11.2 18 14 18q2.24 0 5.04-.72z"></path></svg></a>
+                <a href="/"><svg class="pre-logo-svg" height="60px" width="60px" fill="#111" viewBox="0 0 69 32"><path d="M68.56 4L18.4 25.36Q12.16 28 7.92 28q-4.8 0-6.96-3.36-1.36-2.16-.8-5.48t2.96-7.08q2-3.04 6.56-8-1.6 2.56-2.24 5.28-1.2 5.12 2.16 7.52Q11.2 18 14 18q2.24 0 5.04-.72z"></path></svg></a>
             </div>
             <div class="dekstop-menu-category">
                 <a href="">new & featured</a>
@@ -46,190 +46,56 @@
             </div>    
         </div>
     </div>  
-    <section class="salesForMember container">
-        <div class="inner-salesForMember">
-            <p>Member Exclusive | 20% Off Select Running Gear</p>
-            <a href="">Log in and use code RUNFORALL20 at checkout</a>
+    
+    <div class="profile-title container">
+        <div class="profile-img">
+            <img src="{% static 'main/images/avatar-icon.png' %}" alt="">
         </div>
-    </section>
-    <div class="big-image container">
-        <img src="static/images/image-1.webp" alt="">
-        <div class="big-image-block">
-            <h1>Megan thee stallion's hottiebootcamp</h1>
-            <p>Unleash your inner Hottie with Meg in the NTC APP and shop her look.</p>
-            <div class="big-image-item">
-                <a href="shop.html">Shop her look</a>
-                <a href="">Work Out with Meg</a>
+        <div class="profile-text">
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            <p style="text-transform: none;">Почта: {{ user.email }}</p>
+            <p style="text-transform: none;margin-top:10px">День рождения: {{ user.birth_day }}</p>
+        </div>
+    </div>
+    <div class="profile-button container">
+        <form action="logout/" method="post">
+            {% csrf_token %}
+            <button type="submit" class="newProdBtn">Выйти</button>
+        </form>
+    </div>
+
+    <div class="profile-product container">
+        <div class="product-title">
+            <h2 class="titleSection">Your products</h2>
+        </div>
+        <div class="product-block">
+            <div class="product-item">
+                <img src="{% static 'main/images/item-image-1.webp' %}" alt="">
+                <h4 class="item-name">nike air monarch IV</h4>
+                <p class="item-category">Shoes</p>
+                <span class="item-price">$49.97</span>
             </div>
         </div>
     </div>
-    <section class="featured container">
-        <div class="inner-featured section-padding">
-            <h3 class="titleSection">featured styles</h3>
-            <div class="featured-block">
-                <div class="featured-block-1">
-                    <p class="featured-side-text">Tyler green, ultra trail pro and nike trail athlete <br> @narrowgreennarrow</p>
-                    <div class="featured-item">
-                        <p>nike react pegasus trail 4</p>
-                        <h4>choose your adventure</h4>
-                        <a href="shop.html" class="buttonShop">shop</a>
-                    </div>
-                </div>
-                <div class="featured-block-2">
-                    <p class="featured-side-text">@braylendion, Brooklyn</p>
-                    <div class="featured-item">
-                        <h4>get outside in new fits</h4>
-                        <a href="shop.html" class="buttonShop">shop</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="everyone container">
-        <div class="inner-everyone section-padding">
-            <h3 class="titleSection">Icons for everyone</h3>
-            <div class="everyone-block">
-                <div class="everyone-left">
-                    <img src="static/images/everyone-left.webp" alt="">
-                    <div class="everyone-item">
-                        <h4>Blazers</h4>
-                        <a href="" class="buttonShop">Shop</a>
-                    </div>
-                </div>
+    <div class="profile-fav container">
+        <div class="fav-title">
+            <h2 class="titleSection">Favorites</h2>
+        </div>
+        <div class="product-block">
+            <div class="product-item">
+                <img src="{% static 'main/images/item-image-1.webp' %}" alt="">
+                <h4 class="item-name">nike air monarch IV</h4>
+                <p class="item-category">Shoes</p>
+                <span class="item-price">$49.97</span>
+            </div>
+        </div>
+    </div>
 
-                <div class="everyone-right">
-                    <div class="right-top">
-                        <img src="static/images/everyone-rt.webp" alt="">
-                        <div class="everyone-item">
-                            <h4>Air force 1</h4>
-                            <a href="" class="buttonShop">Shop</a>
-                        </div>
-                    </div>
-                    <div class="right-bottom">
-                        <img src="static/images/everyone-rightBut.webp" alt="">
-                        <div class="everyone-item">
-                            <h4>Air max</h4>
-                            <a href="" class="buttonShop">Shop</a>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        </div>
-    </section>
 
-    <section class="explore container">
-        <div class="inner-explore section-padding">
-            <h3 class="titleSection">More to explore</h3>
-            <div class="explore-block">
-                <img src="static/images/explore-back.webp" alt="">
-                <div class="explore-text">
-                    <h2>run for all</h2>
-                    <p>
-                        Four days of curated gear, guides, and tips to keep you running,
-                        all in Nike App. Plus, right now members ger 20 % off select running styles.
-                    </p>
-                    <div class="explore-item">
-                        <a href="" class="buttonShop">get the nike app</a>
-                        <a href="" class="buttonShop">shop sale</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="popular container">
-        <div class="inner-popular section-padding">
-            <h3 class="titleSection">Popular right now</h3>
-            <div class="popular-block">
-                <div class="popular-item">
-                    <img src="static/images/popular-1.webp" alt="">
-                    <div class="popular-price">
-                        <p>Nike waffle debut</p>
-                        <span>$70</span>
-                    </div>
-                    <p class="popular-category">Men's shoes</p>
-                </div>
-                <div class="popular-item">
-                    <img src="static/images/popular-2.webp" alt="">
-                    <div class="popular-price">
-                        <p>Nike dunk high up</p>
-                        <span>$125</span>
-                    </div>
-                    <p class="popular-category">women's shoes</p>
-                </div>
-                <div class="popular-item">
-                    <img src="static/images/popular-3.webp" alt="">
-                    <div class="popular-price">
-                        <p>Nike air max '97</p>
-                        <span>$185</span>
-                    </div>
-                    <p class="popular-category">Men's shoes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="benefits container">
-        <div class="inner-benefits section-padding">
-            <h3 class="titleSection">Member benefits</h3>
-            <img src="static/images/benefits-back.webp" alt="">
-            <div class="benefits-text">
-                <p>Things are better as a Nike Member. Get first and exclusive access to the newest styles & innovation, free shipping, birthday rewards and more.</p>
-                <div class="benefits-buttons">
-                    <a href="register.html">Join us</a>
-                    <a href="login.html">Sign in</a>
-                </div>
-            </div>
-        </div>
-        <div class="benefits-bottom">
-            <div class="benefits-item">
-                <img src="static/images/benefits-1.webp" alt="">
-                <h4>exclusive nike shopping perks</h4>
-            </div>
-            <div class="benefits-item">
-                <img src="static/images/benefits-2.webp" alt="">
-                <h4>first & exclusive access</h4>
-            </div>
-            <div class="benefits-item">
-                <img src="static/images/benefits-3.webp" alt="">
-                <h4>member rewards & offers</h4>
-            </div>
-        </div>
-    </section>
 
-    <section class="category container">
-        <div class="inner-category section-padding">
-            <div class="category-item">
-                <p>featured</p>
-                <a href="">air force 1</a>
-                <a href="">jordan 1</a>
-                <a href="">air max 2090</a>
-                <a href="">air max 270</a>
-            </div>
-            <div class="category-item">
-                <p>Shoes</p>
-                <a href="">all shoes</a>
-                <a href="">jordan shoes</a>
-                <a href="">running shoes</a>
-                <a href="">basketball shoes</a>
-            </div>
-            <div class="category-item">
-                <p>Clothing</p>
-                <a href="">all clothing</a>
-                <a href="">tops & t-shirt</a>
-                <a href="">shorts</a>
-                <a href="">hoddies & pullovers</a>
-            </div>
-            <div class="category-item">
-                <p>Kids'</p>
-                <a href="">infant & toddler shoes</a>
-                <a href="">kids' shoes</a>
-                <a href="">kids' basketball shoes</a>
-                <a href="">kids' running shoes</a>
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
+ <footer class="footer">
         <div class="inner-footer container">
             <div class="footer-top">
                 <div class="top-item">
@@ -289,3 +155,4 @@
     </footer>
 </body>
 </html>
+{% endblock content %}

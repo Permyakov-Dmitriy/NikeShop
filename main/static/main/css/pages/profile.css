@@ -29,16 +29,18 @@
     font-size: 20px;
     font-weight: 400;
 }
-.profile-button a{
+
+.profile-button a, .newProdBtn{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #111111;
+    background-color: #c64f4f;
     color: #fff;
     text-transform: capitalize;
     border: none;
     outline: none;
     text-decoration: none;
+    font-size: 18px;
     width: 15%;
     height: 50px;
     padding: 0 15px;

@@ -1,0 +1,7 @@
+{% if user.is_authenticated %}
+    <a href="/profile">Profile</a>
+{% else %}
+    <a href="/registration">Join us</a>
+    <a href="">|</a>
+    <a href="/auth">Sing in</a>
+{% endif %}
