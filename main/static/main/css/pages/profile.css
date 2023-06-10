@@ -8,6 +8,26 @@
 .profile-img{
     width: 30%;
 }
+.profile-email-block{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-change-email-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #23c0e5;
+    color: #fff;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    font-size: 18px;
+    height: 30px;
+    padding: 7px;
+    border-radius: 4px;
+}
 .profile-img img{
     width: 70%;
     border-radius: 50%;
@@ -41,11 +61,14 @@
     outline: none;
     text-decoration: none;
     font-size: 18px;
-    width: 15%;
+    width: 1%;
     height: 50px;
     padding: 0 15px;
     border-radius: 4px;
     margin-bottom: 30px;
+}
+.newProdBtn:hover{
+    cursor: pointer;
 }
 /* product section */
 .product-block{

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -153,3 +154,5 @@ EMAIL_SSL_KEYFILE = None
 EMAIL_SSL_CERTFILE = None
 EMAIL_SSL_CA_CERTS = None
 EMAIL_FAIL_SILENTLY = False
+
+SITE_ID = 1

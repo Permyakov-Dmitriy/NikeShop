@@ -18,5 +18,12 @@ class UserSetNewPasswordForm(SetPasswordForm):
     new_password1 = CharField(max_length=50)
     new_password2 = CharField(max_length=50)
 
+
 class UserForgotPasswordForm(PasswordResetForm):
     email = EmailField()
+
+
+class ChangeEmailFrom(Form):
+    new_email = EmailField()
+    old_email = EmailField()
+    password = CharField(max_length=50)

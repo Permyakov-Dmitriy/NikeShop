@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
 from main.views import Home, ProfileView
-from auth_nike.views import RegView, LogoutView, AuthView
-from auth_nike.views import UserForgotPasswordView, UserPasswordResetConfirmView
+
+from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView
+
 
 
 url_reset_password = [
@@ -25,12 +27,17 @@ url_reset_password = [
     path('set-new-password/<uidb64>/<token>/', UserPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
 ]
 
+url_profile = [
+    path('', ProfileView.as_view()),
+    path('logout/', LogoutView.as_view()),
+    path('change-email/', ChangeEmail.as_view())
+]
+
 urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('admin/', admin.site.urls),
-    path('profile/', ProfileView.as_view()),
-    path('profile/logout/', LogoutView.as_view()),
     path('registration/', RegView.as_view(), name='reg'),
     path('auth/', AuthView.as_view()),
+    path('profile/', include(url_profile)),
     path('password-reset/', include(url_reset_password)),
 ]

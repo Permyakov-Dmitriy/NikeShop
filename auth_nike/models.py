@@ -24,6 +24,8 @@ class NikeUser(AbstractBaseUser):
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'birth_day']
@@ -37,10 +39,11 @@ class NikeUser(AbstractBaseUser):
         return self.first_name
 
     def has_perm(self, perm, obj=None):
-        return self.is_superuser
+        return self.is_superuser or super().has_perm(perm, obj)
+
 
     def has_module_perms(self, app_label):
-        return self.is_superuser
+        return self.is_superuser or super().has_module_perms(app_label)
 
     def __str__(self):
         return self.email

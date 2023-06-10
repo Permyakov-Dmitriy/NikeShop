@@ -53,14 +53,17 @@
         </div>
         <div class="profile-text">
             <h1>{{ user.first_name }} {{ user.last_name }}</h1>
-            <p style="text-transform: none;">Почта: {{ user.email }}</p>
+            <div class="profile-email-block">
+                <p style="text-transform: none;">Почта: {{ user.email }}</p>
+                <a href='change-email' class="profile-change-email-btn"><i class="bi bi-pencil-fill"></i></a>
+            </div>
             <p style="text-transform: none;margin-top:10px">День рождения: {{ user.birth_day }}</p>
         </div>
     </div>
     <div class="profile-button container">
         <form action="logout/" method="post">
             {% csrf_token %}
-            <button type="submit" class="newProdBtn">Выйти</button>
+            <button type="submit" class="newProdBtn"><i style='margin-right:10px' class="bi bi-box-arrow-left"></i> Выйти</button>
         </form>
     </div>
 
