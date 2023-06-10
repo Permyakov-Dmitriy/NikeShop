@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nike</title>
-    <link rel="stylesheet" href="static/style/all.css">
-</head>
+{% extends 'main/head.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+{% load static %}
 <body>
     <header class="header container">
         <div class="inner-header">
@@ -53,7 +52,7 @@
         </div>
     </section>
     <div class="big-image container">
-        <img src="static/images/image-1.webp" alt="">
+        <img src="{% static 'main/images/image-1.webp' %}" alt="">
         <div class="big-image-block">
             <h1>Megan thee stallion's hottiebootcamp</h1>
             <p>Unleash your inner Hottie with Meg in the NTC APP and shop her look.</p>
@@ -91,7 +90,7 @@
             <h3 class="titleSection">Icons for everyone</h3>
             <div class="everyone-block">
                 <div class="everyone-left">
-                    <img src="static/images/everyone-left.webp" alt="">
+                    <img src="{% static 'main/images/everyone-left.webp' %}" alt="">
                     <div class="everyone-item">
                         <h4>Blazers</h4>
                         <a href="" class="buttonShop">Shop</a>
@@ -100,14 +99,14 @@
 
                 <div class="everyone-right">
                     <div class="right-top">
-                        <img src="static/images/everyone-rt.webp" alt="">
+                        <img src="{% static 'main/images/everyone-rt.webp' %}" alt="">
                         <div class="everyone-item">
                             <h4>Air force 1</h4>
                             <a href="" class="buttonShop">Shop</a>
                         </div>
                     </div>
                     <div class="right-bottom">
-                        <img src="static/images/everyone-rightBut.webp" alt="">
+                        <img src="{% static 'main/images/everyone-rightBut.webp' %}" alt="">
                         <div class="everyone-item">
                             <h4>Air max</h4>
                             <a href="" class="buttonShop">Shop</a>
@@ -122,7 +121,7 @@
         <div class="inner-explore section-padding">
             <h3 class="titleSection">More to explore</h3>
             <div class="explore-block">
-                <img src="static/images/explore-back.webp" alt="">
+                <img src="{% static 'main/images/explore-back.webp' %}" alt="">
                 <div class="explore-text">
                     <h2>run for all</h2>
                     <p>
@@ -143,7 +142,7 @@
             <h3 class="titleSection">Popular right now</h3>
             <div class="popular-block">
                 <div class="popular-item">
-                    <img src="static/images/popular-1.webp" alt="">
+                    <img src="{% static 'main/images/popular-1.webp' %}" alt="">
                     <div class="popular-price">
                         <p>Nike waffle debut</p>
                         <span>$70</span>
@@ -151,7 +150,7 @@
                     <p class="popular-category">Men's shoes</p>
                 </div>
                 <div class="popular-item">
-                    <img src="static/images/popular-2.webp" alt="">
+                    <img src="{% static 'main/images/popular-2.webp' %}" alt="">
                     <div class="popular-price">
                         <p>Nike dunk high up</p>
                         <span>$125</span>
@@ -159,7 +158,7 @@
                     <p class="popular-category">women's shoes</p>
                 </div>
                 <div class="popular-item">
-                    <img src="static/images/popular-3.webp" alt="">
+                    <img src="{% static 'main/images/popular-3.webp' %}" alt="">
                     <div class="popular-price">
                         <p>Nike air max '97</p>
                         <span>$185</span>
@@ -172,7 +171,7 @@
     <section class="benefits container">
         <div class="inner-benefits section-padding">
             <h3 class="titleSection">Member benefits</h3>
-            <img src="static/images/benefits-back.webp" alt="">
+            <img src="{% static 'main/images/benefits-back.webp' %}" alt="">
             <div class="benefits-text">
                 <p>Things are better as a Nike Member. Get first and exclusive access to the newest styles & innovation, free shipping, birthday rewards and more.</p>
                 <div class="benefits-buttons">
@@ -183,15 +182,15 @@
         </div>
         <div class="benefits-bottom">
             <div class="benefits-item">
-                <img src="static/images/benefits-1.webp" alt="">
+                <img src="{% static 'main/images/benefits-1.webp' %}" alt="">
                 <h4>exclusive nike shopping perks</h4>
             </div>
             <div class="benefits-item">
-                <img src="static/images/benefits-2.webp" alt="">
+                <img src="{% static 'main/images/benefits-2.webp' %}" alt="">
                 <h4>first & exclusive access</h4>
             </div>
             <div class="benefits-item">
-                <img src="static/images/benefits-3.webp" alt="">
+                <img src="{% static 'main/images/benefits-3.webp' %}" alt="">
                 <h4>member rewards & offers</h4>
             </div>
         </div>
@@ -289,3 +288,4 @@
     </footer>
 </body>
 </html>
+{% endblock content %}

@@ -1,11 +1,15 @@
 from django.template.response import TemplateResponse
 from django.views.generic import View
-from .forms import UserNikeReg, UserNikeAuth
 from django.http.response import HttpResponseRedirect
-from .models import NikeUser
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db import IntegrityError
+from django.urls import reverse_lazy
+
+from .models import NikeUser
+from .forms import UserNikeReg, UserNikeAuth, UserSetNewPasswordForm, UserForgotPasswordForm
 
 
 class RegView(View):
@@ -52,16 +56,55 @@ class AuthView(View):
     
     def post(self, req, *args, **kwargs):
         form = UserNikeAuth(req.POST)
-        print(1)
 
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
-            user = NikeUser.objects.get(email=email)
+            try:
+                user = NikeUser.objects.get(email=email)
+            except NikeUser.DoesNotExist:
+                return TemplateResponse(req, 'auth_nike/login.html', {'err': 'Пользователя с такой почтой не существует'})
+            
             if user.check_password(password):
                     login(req, user)
+            else:
+                return TemplateResponse(req, 'auth_nike/login.html', {'err': 'Неверный пароль'})
         else:
             return TemplateResponse(req, 'auth_nike/login.html', {'err': 'Заполните все поля'})
 
         return HttpResponseRedirect('/profile')
+    
+
+class UserForgotPasswordView(SuccessMessageMixin, PasswordResetView):
+    """
+    Представление по сбросу пароля по почте
+    """
+    form_class = UserForgotPasswordForm
+    template_name = 'auth_nike/user_password_reset.html'
+    success_url = reverse_lazy('home')
+    subject_template_name = 'auth_nike/email/password_subject_reset_mail.txt'
+    email_template_name = 'auth_nike/email/password_reset_mail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(self.request.POST)
+        context['title'] = 'Запрос на восстановление пароля'
+        
+        return context
+
+
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    """
+    Представление установки нового пароля
+    """
+    form_class = UserSetNewPasswordForm
+    template_name = 'auth_nike/user_password_set_new.html'
+    success_url = reverse_lazy('home')
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     print(self.request.POST)
+    #     context['title'] = 'Установить новый пароль'
+
+    #     return context
