@@ -1,10 +1,11 @@
+from typing import Optional
 from django.template.response import TemplateResponse
 from django.views.generic import View
 from django.http.response import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db import IntegrityError
 from django.urls import reverse_lazy
 
@@ -12,7 +13,13 @@ from .models import NikeUser
 from .forms import UserNikeReg, UserNikeAuth, UserSetNewPasswordForm, UserForgotPasswordForm, ChangeEmailFrom
 
 
-class RegView(View):
+class RegView(UserPassesTestMixin, View):
+    def test_func(self):
+        return not self.request.user.is_authenticated
+    
+    def handle_no_permission(self):
+        return HttpResponseRedirect('/')
+
     def get(self, req, *args, **kwargs):
         return TemplateResponse(req, 'auth_nike/register.html', {'err': ''})
 
@@ -55,12 +62,19 @@ class LogoutView(View):
 
         return HttpResponseRedirect('/')
     
-class AuthView(View):
+class AuthView(UserPassesTestMixin, View):
+    def test_func(self):
+        return not self.request.user.is_authenticated
+    
+    def handle_no_permission(self):
+        return HttpResponseRedirect('/')
+
     def get(self, req, *args, **kwargs):
         return TemplateResponse(req, 'auth_nike/login.html')
     
     def post(self, req, *args, **kwargs):
         form = UserNikeAuth(req.POST)
+        err = False
 
         if form.is_valid():
             email = form.cleaned_data['email']
@@ -69,26 +83,28 @@ class AuthView(View):
             try:
                 user = NikeUser.objects.get(email=email)
             except NikeUser.DoesNotExist:
-                return TemplateResponse(req, 'auth_nike/login.html', {'err': 'Пользователя с такой почтой не существует'})
+                err = 'Пользователя с такой почтой не существует'
             
             if user.check_password(password):
                     login(req, user)
             else:
-                return TemplateResponse(req, 'auth_nike/login.html', {'err': 'Неверный пароль'})
+                err = 'Неверный пароль'
         else:
-            return TemplateResponse(req, 'auth_nike/login.html', {'err': 'Заполните все поля'})
+            err = 'Заполните все поля'
 
+        if err:
+            return TemplateResponse(req, 'auth_nike/login.html', {'err': err})
+        
         return HttpResponseRedirect('/profile')
     
 
-class UserForgotPasswordView(SuccessMessageMixin, PasswordResetView):
+class UserForgotPasswordView(PasswordResetView):
     """
     Представление по сбросу пароля по почте
     """
     form_class = UserForgotPasswordForm
     template_name = 'auth_nike/user_password_reset.html'
     success_url = reverse_lazy('home')
-    success_message = 'Письмо с инструкцией по восстановлению пароля отправлена на ваш email'
 
     subject_template_name = 'auth_nike/email/password_subject_reset_mail.txt'
     email_template_name = 'auth_nike/email/password_reset_mail.html'
@@ -100,14 +116,13 @@ class UserForgotPasswordView(SuccessMessageMixin, PasswordResetView):
         return context
 
 
-class UserPasswordResetConfirmView(SuccessMessageMixin, PasswordResetConfirmView):
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
     """
     Представление установки нового пароля
     """
     form_class = UserSetNewPasswordForm
     template_name = 'auth_nike/user_password_set_new.html'
     success_url = reverse_lazy('home')
-    success_message = 'Пароль успешно изменен. Можете авторизоваться на сайте.'
 
 
     def get_context_data(self, **kwargs):
