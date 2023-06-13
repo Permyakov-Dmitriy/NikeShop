@@ -1,0 +1,13 @@
+{% extends 'shop_nike/shop_temp.html' %}
+
+{% block shop_list %}
+{% load static %}
+{% for prod in products %}
+    <div class="product-item">
+        <a href=""><img src="{% static 'main/images/' %}{{ prod.image }}" alt=""></a>
+        <h4 class="item-name">{{ prod.title_product }}</h4>
+        <p class="item-category">{{ prod.category }}</p>
+        <span class="item-price">${{ prod.price|floatformat:'-2'|slice:'5' }}</span>
+    </div>
+{% endfor %}
+{% endblock shop_list %}
