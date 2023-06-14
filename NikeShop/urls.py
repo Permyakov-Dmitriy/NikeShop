@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 
-from main.views import Home, ProfileView
+from main.views import Home, ProfileView, FavoriteView
 
 from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView
 
@@ -24,6 +24,7 @@ from shop_nike.views import ShopView, ProductView
 
 
 url_shop = [
+    re_path(r'product/create-fav/', FavoriteView.as_view()),
     re_path(r'product/', ProductView.as_view()),
     re_path(r'[a-z]+', ShopView.as_view(), name='shop'),
 ]
@@ -46,5 +47,5 @@ urlpatterns = [
     path('auth/', AuthView.as_view()),
     path('profile/', include(url_profile)),
     path('password-reset/', include(url_reset_password)),
-    path('shop/', include(url_shop))
+    path('shop/', include(url_shop)),
 ]

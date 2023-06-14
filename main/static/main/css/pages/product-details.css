@@ -52,6 +52,9 @@
     padding: 20px 20px;
     border-radius: 50px;
 }
+.detail-info button:hover{
+    cursor: pointer;
+}
 .detail-info a svg{
     fill: #fff;
     margin-left: 5px;
