@@ -20,11 +20,12 @@ from main.views import Home, ProfileView
 
 from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView
 
-from shop_nike.views import ShopView
+from shop_nike.views import ShopView, ProductView
 
 
 url_shop = [
-    re_path(r'[a-z]+', ShopView.as_view(), name='shop')
+    re_path(r'product/', ProductView.as_view()),
+    re_path(r'[a-z]+', ShopView.as_view(), name='shop'),
 ]
 
 url_reset_password = [
