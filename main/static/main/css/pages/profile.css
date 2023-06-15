@@ -72,9 +72,13 @@
 }
 /* product section */
 .product-block{
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 50px;
+}
+.fav-block{
+    display: flex;
+    gap: 30px;
 }

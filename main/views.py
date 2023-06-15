@@ -6,7 +6,7 @@ from auth_nike.models import NikeUser
 from shop_nike.models import Product
 
 from .models import FavoriteModel
-from .forms import FavoriteForm
+from .forms import FavoriteForm, FavoriteDeleteForm
 
 
 class Home(TemplateView):
@@ -26,9 +26,6 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         return context
     
 class FavoriteView(View):
-    def get(self, req, *args, **kwargs):
-        return HttpResponseRedirect('/')
-    
     def post(self, req, *args, **kwargs):
         form = FavoriteForm(req.POST)
 
@@ -42,3 +39,24 @@ class FavoriteView(View):
             model.save()
 
         return HttpResponseRedirect(f'/shop/product/?id={product_id}')
+    
+
+class FavoriteDeleteView(View):
+    def post(self, req, *args, **kwargs):
+        form = FavoriteDeleteForm(req.POST)
+
+        if form.is_valid():
+            product_id = form.cleaned_data['product_id']
+            fav_id = form.cleaned_data['fav_id']
+
+            user = NikeUser.objects.get(id=self.request.user.id)
+
+            print(fav_id)
+            print(user.id)
+
+            fav = FavoriteModel.objects.get(id=fav_id, user_id=user)
+
+            fav.delete()
+
+        return HttpResponseRedirect(f'/shop/product/?id={product_id}')
+

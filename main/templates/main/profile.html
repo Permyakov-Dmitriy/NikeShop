@@ -79,16 +79,18 @@
         <div class="fav-title">
             <h2 class="titleSection">Favorites</h2>
         </div>
-        {% for f in fav %}
-            <div class="product-block">
-                <div class="product-item">
-                    <a href="/shop/product/?id={{ f.product_id.id }}"><img src="{% static 'main/images/' %}{{ f.product_id.image }}" alt=""></a>
-                    <h4 class="item-name">{{ f.product_id.title_product }}</h4>
-                    <p class="item-category">{{ f.product_id.category }}</p>
-                    <span class="item-price">${{ f.product_id.price|floatformat:'-2'|slice:'5' }}</span>
+        <div class="fav-block">
+            {% for f in fav %}
+                <div class="product-block">
+                    <div class="product-item">
+                        <a href="/shop/product/?id={{ f.product_id.id }}"><img src="{% static 'main/images/' %}{{ f.product_id.image }}" alt=""></a>
+                        <h4 class="item-name">{{ f.product_id.title_product }}</h4>
+                        <p class="item-category">{{ f.product_id.category }}</p>
+                        <span class="item-price">${{ f.product_id.price|floatformat:'-2'|slice:'5' }}</span>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 
 

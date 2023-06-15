@@ -86,7 +86,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "Nike",
         "USER": "postgres",
-        "PASSWORD": "1234",
+        "PASSWORD": "ggwp",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
