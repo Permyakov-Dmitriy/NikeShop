@@ -1,4 +1,3 @@
-from NikeShop.celery import app
 from celery import shared_task
 
 from datetime import timedelta, datetime

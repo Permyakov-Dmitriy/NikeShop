@@ -3,7 +3,7 @@
 {% block shop_list %}
 {% load static %}
 {% for prod in products %}
-    <div class="product-item">
+    <div class="product-item-shop">
         <a href="product/?id={{ prod.id }}"><img src="{% static 'main/images/' %}{{ prod.image }}" alt=""></a>
         <h4 class="item-name">{{ prod.title_product }}</h4>
         <p class="item-category">{{ prod.category }}</p>

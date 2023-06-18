@@ -46,11 +46,11 @@
                 <h1>Category</h1>
             </div>
             <div class="category-list">
-                <a href="" class="list-item">Shoes</a>
-                <a href="" class="list-item">Tops & T-Shirts</a>
-                <a href="" class="list-item">Shorts</a>
-                <a href="" class="list-item">Pants & Tights</a>
-                <a href="" class="list-item">Jackets & Vests</a>
+                <a href="{{ request.path }}?gender={{ gender }}&category=Shoes" class="list-item">Shoes</a>
+                <a href="{{ request.path }}?gender={{ gender }}&category=Tops" class="list-item">Tops & T-Shirts</a>
+                <a href="{{ request.path }}?gender={{ gender }}&category=Shorts" class="list-item">Shorts</a>
+                <a href="{{ request.path }}?gender={{ gender }}&category=Pants" class="list-item">Pants & Tights</a>
+                <a href="{{ request.path }}?gender={{ gender }}&category=Jackets" class="list-item">Jackets & Vests</a>
             </div>
         </div>
         <div class="page-content">

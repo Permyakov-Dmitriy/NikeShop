@@ -39,26 +39,29 @@
 /* content */
 .products{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 20px;
 }
-.product-item{
+.product-item-shop{
     width: 30%;
     margin-bottom: 50px;
 }
-.product-item img{
+.product-item{
+    margin-bottom: 50px;
+}
+.product-item img, .product-item-shop img{
     width: 100%;
     margin-bottom: 10px;
 }
-.product-item h4{
+.product-item h4, .product-item-shop h4{
     text-transform: capitalize;
     color: #111111;
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 10px;
 }
-.product-item p{
+.product-item p, .product-item-shop p{
     text-transform: capitalize;
     color: #8d8d8d;
     font-size: 16px;

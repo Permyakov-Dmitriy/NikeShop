@@ -3,6 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 
+from random import shuffle
+
 
 from .models import Product
 from main.models import FavoriteModel
@@ -15,9 +17,16 @@ class ShopView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        gender = self.request.GET.get('gender', '')
         category = self.request.GET.get('category', '')
 
-        context['products'] = Product.objects.filter(gender=category)
+        products = Product.objects.filter(gender=gender)
+
+        if category:
+            products = products.filter(category=category)
+
+        context['gender'] = gender
+        context['products'] = products.order_by('?')
         
         return context
 
@@ -44,7 +53,6 @@ class ProductView(LoginRequiredMixin, TemplateView):
             fav_id = None
             isFav = False
 
-        print(fav_id)
         context['isFav'] = isFav
         context['fav_id'] = fav_id
         context['user'] = self.request.user

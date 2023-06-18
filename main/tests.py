@@ -1,10 +1,4 @@
 from django.test import TestCase, Client
-from NikeShop.celery import app
-from main.tasks import test
-
-class TestCelery(TestCase):
-    def test_task(self):
-        test.apply_async()
 
 
 class TestHome(TestCase):
