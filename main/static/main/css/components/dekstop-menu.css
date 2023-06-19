@@ -39,12 +39,19 @@
     padding: 5px;
     margin-left: 100px;
 }
+.dekstop-menu-search button{
+    border: none;
+    border-radius: 50%;
+}
 .dekstop-menu-search input{
     border: none;
     background: #f5f5f5;
     margin-left: 10px;
     width: 50%;
     outline: none;
+}
+.dekstop-menu-search form{
+    display: flex;
 }
 .dekstop-menu-icons{
     display: flex;
@@ -59,7 +66,6 @@
     border-radius: 50%;
     margin-left: 20px;
 }
-
 .dekstop-menu-category a:hover{
     border-bottom: solid 3px #111111;
     transition: .3s;
@@ -71,6 +77,10 @@
     transition: .3s;
 }
 .dekstop-menu-search:hover input{
+    background: #d2d2d2;
+    transition: .3s;
+}
+.dekstop-menu-search:hover button{
     background: #d2d2d2;
     transition: .3s;
 }

@@ -3,8 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 
-from random import shuffle
-
 
 from .models import Product
 from main.models import FavoriteModel
@@ -58,4 +56,19 @@ class ProductView(LoginRequiredMixin, TemplateView):
         context['user'] = self.request.user
         context['prod'] = product
 
+        return context
+
+
+class ProductsSearchView(LoginRequiredMixin, TemplateView):
+    template_name = 'shop_nike/shop.html'
+    login_url = '/auth'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search = '.*' + self.request.GET.get('search', '') + '.*'
+
+        products = Product.objects.filter(title_product__iregex=search)
+
+        context['products'] = products
+        
         return context
