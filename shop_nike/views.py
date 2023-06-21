@@ -2,7 +2,11 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
+<<<<<<< HEAD
 from django.db.models import Count
+=======
+
+>>>>>>> 33d76f7962f71c07538ccd28b53eb2dc331bef99
 
 from .models import Product
 from main.models import FavoriteModel
@@ -70,4 +74,19 @@ class ProductView(LoginRequiredMixin, TemplateView):
         context['prod'] = product
         context['gender'] = gender
 
+        return context
+
+
+class ProductsSearchView(LoginRequiredMixin, TemplateView):
+    template_name = 'shop_nike/shop.html'
+    login_url = '/auth'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search = '.*' + self.request.GET.get('search', '') + '.*'
+
+        products = Product.objects.filter(title_product__iregex=search)
+
+        context['products'] = products
+        
         return context

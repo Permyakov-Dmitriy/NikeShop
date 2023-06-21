@@ -86,7 +86,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "Nike",
         "USER": "postgres",
-        "PASSWORD": "1234",
+        "PASSWORD": "ggwp",
         "HOST": "localhost",
         "PORT": "5432",
     }
@@ -148,7 +148,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'dima.perm11@gmail.com'
-EMAIL_HOST_PASSWORD = 'chmvbnzzxrbkvscm'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'dima.perm11@gmail.com'
 

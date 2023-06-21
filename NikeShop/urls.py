@@ -20,13 +20,14 @@ from main.views import Home, ProfileView, FavoriteView, FavoriteDeleteView
 
 from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView
 
-from shop_nike.views import ShopView, ProductView
+from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
 
 url_shop = [
     path('product/', ProductView.as_view()),
     path('product/fav/', FavoriteView.as_view()),
     path('product/fav-del/', FavoriteDeleteView.as_view()),
+    path('find/', ProductsSearchView.as_view()),
     path('', ShopView.as_view(), name='shop'),
 ]
 
