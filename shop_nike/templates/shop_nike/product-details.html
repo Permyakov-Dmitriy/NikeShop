@@ -47,7 +47,7 @@
         </div>
     </div>
     
-    <div class="prod-det-comments container">
+    <!-- <div class="prod-det-comments container">
         <div class="comment">
             <div class="comment-header">
                 <img src="{% static 'main/images/avatar-icon.png' %}" alt="">
@@ -66,8 +66,23 @@
         <span class="comment-warning">
             To write a comment <a href="">Register</a> , or  <a href="">Log in</a> to your account.
         </span>
-    </div>
+    </div> -->
 
+    <div class="profile-fav container recomend">
+        <div class="fav-title">
+            <h2 class="titleSection">You Might Also Like</h2>
+        </div>
+        {% for rec in list_recomend %}
+            <div class="product-block recomend-block">
+                <div class="product-item">
+                    <a href="/shop/product/?id={{ rec.id }}&gender={{ gender }}"><img src="{% static 'main/images/' %}{{ rec.image }}" alt=""></a>
+                    <h4 class="item-name">{{ rec.title_product }}</h4>
+                    <p class="item-category">{{ rec.category }}</p>
+                    <span class="item-price">${{ rec.price|floatformat:'-2'|slice:'5' }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
     <footer class="footer">
         <div class="inner-footer container">

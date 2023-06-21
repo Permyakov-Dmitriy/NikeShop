@@ -81,13 +81,15 @@ class AuthView(UserPassesTestMixin, View):
 
             try:
                 user = NikeUser.objects.get(email=email)
+
+                if user.check_password(password):
+                    login(req, user)
+                else:
+                    err = 'Неверный пароль'
+                    
             except NikeUser.DoesNotExist:
                 err = 'Пользователя с такой почтой не существует'
             
-            if user.check_password(password):
-                    login(req, user)
-            else:
-                err = 'Неверный пароль'
         else:
             err = 'Заполните все поля'
 

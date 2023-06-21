@@ -2,9 +2,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-
-from random import shuffle
-
+from django.db.models import Count
 
 from .models import Product
 from main.models import FavoriteModel
@@ -37,7 +35,10 @@ class ProductView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         product_id = self.request.GET.get('id', 1)
+        gender = self.request.GET.get('gender', '')
+
         user = NikeUser.objects.get(id=self.request.user.id)
 
         try:
@@ -45,6 +46,15 @@ class ProductView(LoginRequiredMixin, TemplateView):
         except ObjectDoesNotExist:
             raise Http404()
         
+        fav_fltr_gender = FavoriteModel.objects.filter(product_id__gender=gender)
+
+        recomend_prod_on_fav = fav_fltr_gender.values('product_id') \
+        .annotate(total_products=Count('user_id')).order_by('-total_products')
+
+        product_ids = [item['product_id'] for item in recomend_prod_on_fav]
+
+        recomend_list_products = Product.objects.filter(id__in=product_ids)
+
         try:
             favorite = FavoriteModel.objects.get(product_id=product, user_id=user)
             fav_id = favorite.id
@@ -53,9 +63,11 @@ class ProductView(LoginRequiredMixin, TemplateView):
             fav_id = None
             isFav = False
 
+        context['list_recomend'] = recomend_list_products
         context['isFav'] = isFav
         context['fav_id'] = fav_id
         context['user'] = self.request.user
         context['prod'] = product
+        context['gender'] = gender
 
         return context
