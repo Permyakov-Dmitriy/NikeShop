@@ -38,7 +38,6 @@ class ProductView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         product_id = self.request.GET.get('id', 1)
-        gender = self.request.GET.get('gender', '')
 
         user = NikeUser.objects.get(id=self.request.user.id)
 
@@ -47,7 +46,7 @@ class ProductView(LoginRequiredMixin, TemplateView):
         except ObjectDoesNotExist:
             raise Http404()
         
-        fav_fltr_gender = FavoriteModel.objects.filter(product_id__gender=gender)
+        fav_fltr_gender = FavoriteModel.objects.filter(product_id__gender=product.gender)
 
         recomend_prod_on_fav = fav_fltr_gender.values('product_id') \
         .annotate(total_products=Count('user_id')).order_by('-total_products')
@@ -69,7 +68,6 @@ class ProductView(LoginRequiredMixin, TemplateView):
         context['fav_id'] = fav_id
         context['user'] = self.request.user
         context['prod'] = product
-        context['gender'] = gender
 
         return context
 

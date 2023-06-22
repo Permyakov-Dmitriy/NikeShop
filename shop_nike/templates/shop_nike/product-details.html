@@ -47,25 +47,20 @@
         </div>
     </div>
     
-    <div class="prod-det-comments container">
-        <div class="comment">
-            <div class="comment-header">
-                <img src="{% static 'main/images/avatar-icon.png' %}" alt="">
-                Tamerlan Tyulyubekov
-            </div>
-            <p>
-                В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.
-            </p>
+    <div class="profile-fav container recomend">
+        <div class="fav-title">
+            <h2 class="titleSection">You Might Also Like</h2>
         </div>
-
-        <span class="comment-add">
-            <textarea name="" class="comment-textarea" placeholder="Введит текст комментария"></textarea>
-            <button class="button buttonStyle">Send</button>
-        </span>
-
-        <span class="comment-warning">
-            To write a comment <a href="">Register</a> , or  <a href="">Log in</a> to your account.
-        </span>
+        {% for rec in list_recomend %}
+            <div class="product-block recomend-block">
+                <div class="product-item">
+                    <a href="/shop/product/?id={{ rec.id }}"><img src="{% static 'main/images/' %}{{ rec.image }}" alt=""></a>
+                    <h4 class="item-name">{{ rec.title_product }}</h4>
+                    <p class="item-category">{{ rec.category }}</p>
+                    <span class="item-price">${{ rec.price|floatformat:'-2'|slice:'5' }}</span>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 
     <footer class="footer">
