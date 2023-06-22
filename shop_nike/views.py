@@ -2,11 +2,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-<<<<<<< HEAD
-from django.db.models import Count
-=======
 
->>>>>>> 33d76f7962f71c07538ccd28b53eb2dc331bef99
+from django.db.models import Count
 
 from .models import Product
 from main.models import FavoriteModel
