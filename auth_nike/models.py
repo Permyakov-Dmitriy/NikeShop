@@ -20,7 +20,7 @@ class NikeUser(AbstractBaseUser):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
     email = models.EmailField(unique=True)
-    birth_day = models.DateField()
+    birth_day = models.DateField(null=True)
 
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

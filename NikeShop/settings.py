@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-r^b1eq8#nh78m@^**5#m%wth=bq#$9trcflp9c#voc=5@b#+!(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'mysite.com']
 
 
 # Application definition
@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_celery_beat',
     'django_celery_results',
+    'django_extensions',
     'celery',
     'main',
     'auth_nike',
-    'shop_nike'
+    'shop_nike',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -164,3 +166,13 @@ SITE_ID = 1
 
 CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '774992579181-gsdq8uuou2a7ojren90gc758bdmof8ov.apps.googleusercontent.com' # ИД клиента Google 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Секрет клиента Google

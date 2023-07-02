@@ -11,6 +11,17 @@ from django.urls import reverse_lazy
 from .models import NikeUser
 from .forms import UserNikeReg, UserNikeAuth, UserSetNewPasswordForm, UserForgotPasswordForm, ChangeEmailFrom
 
+from django.shortcuts import redirect
+
+def google_login(request):
+    return redirect('social:begin', backend='google-oauth2')
+
+
+def google_callback(request):
+    user = request.user
+    login(request, user)
+    return redirect('home')
+
 
 class RegView(UserPassesTestMixin, View):
     def test_func(self):

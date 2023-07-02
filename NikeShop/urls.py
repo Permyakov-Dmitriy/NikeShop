@@ -18,7 +18,7 @@ from django.urls import path, include
 
 from main.views import Home, ProfileView, FavoriteView, FavoriteDeleteView
 
-from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView
+from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView, google_callback, google_login
 
 from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
@@ -50,4 +50,8 @@ urlpatterns = [
     path('profile/', include(url_profile)),
     path('password-reset/', include(url_reset_password)),
     path('shop/', include(url_shop)),
+    path('social-auth/', include('social_django.urls', namespace='social')),
+    path('login/google/', google_login, name='google-login'),
+    path('login/google/callback/', google_callback, name='google-callback'),
+
 ]
