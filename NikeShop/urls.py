@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from social_django import urls
 
 from main.views import Home, ProfileView, FavoriteView, FavoriteDeleteView
 
@@ -50,7 +51,7 @@ urlpatterns = [
     path('profile/', include(url_profile)),
     path('password-reset/', include(url_reset_password)),
     path('shop/', include(url_shop)),
-    path('social-auth/', include('social_django.urls', namespace='social')),
+    path('social-auth/', include(urls, namespace='social')),
     path('login/google/', google_login, name='google-login'),
     path('login/google/callback/', google_callback, name='google-callback'),
 

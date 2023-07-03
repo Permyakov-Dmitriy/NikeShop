@@ -1,0 +1,117 @@
+[1mdiff --git a/auth_nike/__pycache__/views.cpython-310.pyc b/auth_nike/__pycache__/views.cpython-310.pyc[m
+[1mindex f33b9af..52a2265 100644[m
+Binary files a/auth_nike/__pycache__/views.cpython-310.pyc and b/auth_nike/__pycache__/views.cpython-310.pyc differ
+[1mdiff --git a/main/static/main/css/components/dekstop-menu.css b/main/static/main/css/components/dekstop-menu.css[m
+[1mindex 2bda759..6dd9a5b 100644[m
+[1m--- a/main/static/main/css/components/dekstop-menu.css[m
+[1m+++ b/main/static/main/css/components/dekstop-menu.css[m
+[36m@@ -14,6 +14,9 @@[m
+     width: 33%;[m
+     padding: 0px 5px;[m
+ }[m
+[32m+[m[32m.input:-internal-autofill-selected{[m[41m[m
+[32m+[m[32m    background-color: #d2d2d2;[m[41m[m
+[32m+[m[32m}[m[41m[m
+ .dekstop-menu-category a{[m
+     text-decoration: none;[m
+     color: #111111;[m
+[1mdiff --git a/main/templates/main/index.html b/main/templates/main/index.html[m
+[1mindex 14ea97f..e264efd 100644[m
+[1m--- a/main/templates/main/index.html[m
+[1m+++ b/main/templates/main/index.html[m
+[36m@@ -28,12 +28,7 @@[m
+             </div>[m
+             {% include 'main/header-link.html' %}[m
+             <div class="dekstop-menu-block">      [m
+[31m-                <div class="dekstop-menu-search">[m
+[31m-                    <form action="/shop/find/" method="get">[m
+[31m-                        <button type="submit"><svg class="pre-search-input-icon" fill="#111" height="30px" width="30px" viewBox="0 0 24 24"><path d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.39zM11 18a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"></path></svg></button>[m
+[31m-                        <input name='search' type="text" class="input-search" placeholder="Search">    [m
+[31m-                    </form>                [m
+[31m-                </div>[m
+[32m+[m[32m                {% include 'main/search.html' %}[m[41m[m
+                 <div class="dekstop-menu-icons">[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M21.11 4a6.6 6.6 0 0 0-4.79-1.92A6.27 6.27 0 0 0 12 3.84 6.57 6.57 0 0 0 2.89 4c-2.8 2.68-2.45 7.3.88 10.76l6.84 6.63A2 2 0 0 0 12 22a2 2 0 0 0 1.37-.54l.2-.19.61-.57c.6-.57 1.42-1.37 2.49-2.41l2.44-2.39 1.09-1.07c3.38-3.55 3.8-8.1.91-10.83zm-2.35 9.4l-.25.24-.8.79-2.44 2.39c-1 1-1.84 1.79-2.44 2.36L12 20l-6.83-6.68c-2.56-2.66-2.86-6-.88-7.92a4.52 4.52 0 0 1 6.4 0l.09.08a2.12 2.12 0 0 1 .32.3l.9.94.9-.94.28-.27.11-.09a4.52 4.52 0 0 1 6.43 0c1.97 1.9 1.67 5.25-.96 7.98z"></path></svg></a>[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M16 7a1 1 0 0 1-1-1V3H9v3a1 1 0 0 1-2 0V3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1z"></path><path d="M20 5H4a2 2 0 0 0-2 2v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a2 2 0 0 0-2-2zm0 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7h16z"></path></svg></a>[m
+[1mdiff --git a/main/templates/main/profile.html b/main/templates/main/profile.html[m
+[1mindex e970cc7..cd0a901 100644[m
+[1m--- a/main/templates/main/profile.html[m
+[1m+++ b/main/templates/main/profile.html[m
+[36m@@ -29,10 +29,7 @@[m
+             </div>[m
+             {% include 'main/header-link.html' %}[m
+             <div class="dekstop-menu-block">      [m
+[31m-                <div class="dekstop-menu-search">[m
+[31m-                    <a href=""><svg class="pre-search-input-icon" fill="#111" height="30px" width="30px" viewBox="0 0 24 24"><path d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.39zM11 18a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"></path></svg></a>[m
+[31m-                    <input type="text" class="input-search" placeholder="Search">[m
+[31m-                </div>[m
+[32m+[m[32m                {% include 'main/search.html' %}[m[41m[m
+                 <div class="dekstop-menu-icons">[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M21.11 4a6.6 6.6 0 0 0-4.79-1.92A6.27 6.27 0 0 0 12 3.84 6.57 6.57 0 0 0 2.89 4c-2.8 2.68-2.45 7.3.88 10.76l6.84 6.63A2 2 0 0 0 12 22a2 2 0 0 0 1.37-.54l.2-.19.61-.57c.6-.57 1.42-1.37 2.49-2.41l2.44-2.39 1.09-1.07c3.38-3.55 3.8-8.1.91-10.83zm-2.35 9.4l-.25.24-.8.79-2.44 2.39c-1 1-1.84 1.79-2.44 2.36L12 20l-6.83-6.68c-2.56-2.66-2.86-6-.88-7.92a4.52 4.52 0 0 1 6.4 0l.09.08a2.12 2.12 0 0 1 .32.3l.9.94.9-.94.28-.27.11-.09a4.52 4.52 0 0 1 6.43 0c1.97 1.9 1.67 5.25-.96 7.98z"></path></svg></a>[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M16 7a1 1 0 0 1-1-1V3H9v3a1 1 0 0 1-2 0V3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1z"></path><path d="M20 5H4a2 2 0 0 0-2 2v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a2 2 0 0 0-2-2zm0 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7h16z"></path></svg></a>[m
+[1mdiff --git a/shop_nike/__pycache__/views.cpython-310.pyc b/shop_nike/__pycache__/views.cpython-310.pyc[m
+[1mindex 906ef3e..e1e4a07 100644[m
+Binary files a/shop_nike/__pycache__/views.cpython-310.pyc and b/shop_nike/__pycache__/views.cpython-310.pyc differ
+[1mdiff --git a/shop_nike/templates/shop_nike/product-details.html b/shop_nike/templates/shop_nike/product-details.html[m
+[1mindex 16e2d68..11e9079 100644[m
+[1m--- a/shop_nike/templates/shop_nike/product-details.html[m
+[1m+++ b/shop_nike/templates/shop_nike/product-details.html[m
+[36m@@ -28,10 +28,7 @@[m
+             </div>[m
+             {% include 'main/header-link.html' %}[m
+             <div class="dekstop-menu-block">      [m
+[31m-                <div class="dekstop-menu-search">[m
+[31m-                    <a href=""><svg class="pre-search-input-icon" fill="#111" height="30px" width="30px" viewBox="0 0 24 24"><path d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.39zM11 18a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"></path></svg></a>[m
+[31m-                    <input type="text" class="input-search" placeholder="Search">[m
+[31m-                </div>[m
+[32m+[m[32m                {% include 'main/search.html' %}[m[41m[m
+                 <div class="dekstop-menu-icons">[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M21.11 4a6.6 6.6 0 0 0-4.79-1.92A6.27 6.27 0 0 0 12 3.84 6.57 6.57 0 0 0 2.89 4c-2.8 2.68-2.45 7.3.88 10.76l6.84 6.63A2 2 0 0 0 12 22a2 2 0 0 0 1.37-.54l.2-.19.61-.57c.6-.57 1.42-1.37 2.49-2.41l2.44-2.39 1.09-1.07c3.38-3.55 3.8-8.1.91-10.83zm-2.35 9.4l-.25.24-.8.79-2.44 2.39c-1 1-1.84 1.79-2.44 2.36L12 20l-6.83-6.68c-2.56-2.66-2.86-6-.88-7.92a4.52 4.52 0 0 1 6.4 0l.09.08a2.12 2.12 0 0 1 .32.3l.9.94.9-.94.28-.27.11-.09a4.52 4.52 0 0 1 6.43 0c1.97 1.9 1.67 5.25-.96 7.98z"></path></svg></a>[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M16 7a1 1 0 0 1-1-1V3H9v3a1 1 0 0 1-2 0V3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1z"></path><path d="M20 5H4a2 2 0 0 0-2 2v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a2 2 0 0 0-2-2zm0 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7h16z"></path></svg></a>[m
+[1mdiff --git a/shop_nike/templates/shop_nike/shop.html b/shop_nike/templates/shop_nike/shop.html[m
+[1mindex 55c7a1b..1f826c0 100644[m
+[1m--- a/shop_nike/templates/shop_nike/shop.html[m
+[1m+++ b/shop_nike/templates/shop_nike/shop.html[m
+[36m@@ -4,7 +4,7 @@[m
+ {% load static %}[m
+ {% for prod in products %}[m
+     <div class="product-item-shop">[m
+[31m-        <a href="product/?id={{ prod.id }}&gender={{ gender }}"><img src="{% static 'main/images/' %}{{ prod.image }}" alt=""></a>[m
+[32m+[m[32m        <a href="/shop/product/?id={{ prod.id }}&gender={{ gender }}"><img src="{% static 'main/images/' %}{{ prod.image }}" alt=""></a>[m
+         <h4 class="item-name">{{ prod.title_product }}</h4>[m
+         <p class="item-category">{{ prod.category }}</p>[m
+         <span class="item-price">${{ prod.price|floatformat:'-2'|slice:'5' }}</span>[m
+[1mdiff --git a/shop_nike/templates/shop_nike/shop_temp.html b/shop_nike/templates/shop_nike/shop_temp.html[m
+[1mindex 85b61bd..eeb2174 100644[m
+[1m--- a/shop_nike/templates/shop_nike/shop_temp.html[m
+[1m+++ b/shop_nike/templates/shop_nike/shop_temp.html[m
+[36m@@ -28,12 +28,7 @@[m
+             </div>[m
+             {% include 'main/header-link.html' %}[m
+             <div class="dekstop-menu-block">      [m
+[31m-                <div class="dekstop-menu-search">[m
+[31m-                    <form action="/shop/find/" method="get">[m
+[31m-                        <button type="submit"><svg class="pre-search-input-icon" fill="#111" height="30px" width="30px" viewBox="0 0 24 24"><path d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.39zM11 18a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"></path></svg></button>[m
+[31m-                        <input name='search' type="text" class="input-search" placeholder="Search">    [m
+[31m-                    </form>[m
+[31m-                </div>[m
+[32m+[m[32m                {% include 'main/search.html' %}[m
+                 <div class="dekstop-menu-icons">[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M21.11 4a6.6 6.6 0 0 0-4.79-1.92A6.27 6.27 0 0 0 12 3.84 6.57 6.57 0 0 0 2.89 4c-2.8 2.68-2.45 7.3.88 10.76l6.84 6.63A2 2 0 0 0 12 22a2 2 0 0 0 1.37-.54l.2-.19.61-.57c.6-.57 1.42-1.37 2.49-2.41l2.44-2.39 1.09-1.07c3.38-3.55 3.8-8.1.91-10.83zm-2.35 9.4l-.25.24-.8.79-2.44 2.39c-1 1-1.84 1.79-2.44 2.36L12 20l-6.83-6.68c-2.56-2.66-2.86-6-.88-7.92a4.52 4.52 0 0 1 6.4 0l.09.08a2.12 2.12 0 0 1 .32.3l.9.94.9-.94.28-.27.11-.09a4.52 4.52 0 0 1 6.43 0c1.97 1.9 1.67 5.25-.96 7.98z"></path></svg></a>[m
+                     <a href=""><svg width="24px" height="24px" fill="#111" viewBox="0 0 24 24"><path d="M16 7a1 1 0 0 1-1-1V3H9v3a1 1 0 0 1-2 0V3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3a1 1 0 0 1-1 1z"></path><path d="M20 5H4a2 2 0 0 0-2 2v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a2 2 0 0 0-2-2zm0 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7h16z"></path></svg></a>[m
+[1mdiff --git a/shop_nike/views.py b/shop_nike/views.py[m
+[1mindex ff7bc6f..9b105a2 100644[m
+[1m--- a/shop_nike/views.py[m
+[1m+++ b/shop_nike/views.py[m
+[36m@@ -2,11 +2,7 @@[m [mfrom django.views.generic import TemplateView[m
+ from django.contrib.auth.mixins import LoginRequiredMixin[m
+ from django.core.exceptions import ObjectDoesNotExist[m
+ from django.http import Http404[m
+[31m-<<<<<<< HEAD[m
+ from django.db.models import Count[m
+[31m-=======[m
+[31m-[m
+[31m->>>>>>> 33d76f7962f71c07538ccd28b53eb2dc331bef99[m
+ [m
+ from .models import Product[m
+ from main.models import FavoriteModel[m

@@ -88,7 +88,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "Nike",
         "USER": "postgres",
-        "PASSWORD": "1234",
+        "PASSWORD": "ggwp",
         "HOST": "localhost",
         "PORT": "5432",
     }
@@ -168,11 +168,31 @@ CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 
+SOCIAL_AUTH_PIPELINE = [ 
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid', 
+    'social_core.pipeline.social_auth.auth_allowed', 
+    'social_core.pipeline.social_auth.social_user', 
+    'social_core.pipeline.user.get_username',
+    'auth_nike.pipeline.create_profile',
+    'social_core.pipeline.user.create_user', 
+    'social_core.pipeline.social_auth.associate_user', 
+    'social_core.pipeline.social_auth.load_extra_data', 
+    'social_core.pipeline.user.user_details', ]
+
+
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.vk.VKOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '774992579181-gsdq8uuou2a7ojren90gc758bdmof8ov.apps.googleusercontent.com' # ИД клиента Google 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Секрет клиента Google
+LOGIN_REDIRECT_URL = 'https://mysite.com:8000/profile/'
+
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '51694628'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'OquHQpUoan282TcH5Fiz'
+

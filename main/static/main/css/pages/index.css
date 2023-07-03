@@ -305,3 +305,7 @@
     color: #111111;
     transition: .1s;
 }
+
+.button:hover{
+    cursor: pointer;
+}

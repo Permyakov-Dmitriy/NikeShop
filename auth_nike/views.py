@@ -94,7 +94,7 @@ class AuthView(UserPassesTestMixin, View):
                 user = NikeUser.objects.get(email=email)
 
                 if user.check_password(password):
-                    login(req, user)
+                    login(req, user, backend='django.contrib.auth.backends.ModelBackend')
                 else:
                     err = 'Неверный пароль'
                     

@@ -76,3 +76,16 @@
     color: black;
     text-transform: capitalize;
 }
+
+.google{
+    margin: 25px 0;
+}
+
+.google a{
+    background-color: #e94235;
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+}
