@@ -12,6 +12,7 @@ from .forms import FavoriteForm, FavoriteDeleteForm
 class Home(TemplateView):
     template_name = 'main/index.html'
 
+
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'main/profile.html'
     login_url = '/auth'
@@ -50,9 +51,6 @@ class FavoriteDeleteView(View):
             fav_id = form.cleaned_data['fav_id']
 
             user = NikeUser.objects.get(id=self.request.user.id)
-
-            print(fav_id)
-            print(user.id)
 
             fav = FavoriteModel.objects.get(id=fav_id, user_id=user)
 

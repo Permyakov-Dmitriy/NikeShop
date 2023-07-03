@@ -27,3 +27,7 @@ class ChangeEmailFrom(Form):
     new_email = EmailField()
     old_email = EmailField()
     password = CharField(max_length=50)
+
+
+class VKEmailForm(Form):
+    email = EmailField()

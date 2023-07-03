@@ -88,7 +88,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "Nike",
         "USER": "postgres",
-        "PASSWORD": "ggwp",
+        "PASSWORD": "1234",
         "HOST": "localhost",
         "PORT": "5432",
     }
@@ -174,7 +174,8 @@ SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.social_auth.auth_allowed', 
     'social_core.pipeline.social_auth.social_user', 
     'social_core.pipeline.user.get_username',
-    'auth_nike.pipeline.create_profile',
+    'auth_nike.pipeline.send_email',
+    'auth_nike.pipeline.save_email',
     'social_core.pipeline.user.create_user', 
     'social_core.pipeline.social_auth.associate_user', 
     'social_core.pipeline.social_auth.load_extra_data', 

@@ -1,5 +1,5 @@
 from django.template.response import TemplateResponse
-from django.views.generic import View
+from django.views.generic import View, FormView
 from django.http.response import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout
@@ -8,19 +8,15 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db import IntegrityError
 from django.urls import reverse_lazy
 
+from social_django.utils import load_backend, load_strategy
+
 from .models import NikeUser
-from .forms import UserNikeReg, UserNikeAuth, UserSetNewPasswordForm, UserForgotPasswordForm, ChangeEmailFrom
-
-from django.shortcuts import redirect
-
-def google_login(request):
-    return redirect('social:begin', backend='google-oauth2')
-
-
-def google_callback(request):
-    user = request.user
-    login(request, user)
-    return redirect('home')
+from .forms import UserNikeReg, \
+                    UserNikeAuth, \
+                    UserSetNewPasswordForm, \
+                    UserForgotPasswordForm, \
+                    ChangeEmailFrom, \
+                    VKEmailForm
 
 
 class RegView(UserPassesTestMixin, View):
@@ -174,3 +170,23 @@ class ChangeEmail(View):
             return TemplateResponse(req, 'auth_nike/change_password.html', {'error': err})
         
         return HttpResponseRedirect('/profile/')
+
+
+class VKEmailView(FormView):
+    template_name = 'auth_nike/VKEmail.html'
+    form_class = VKEmailForm
+    success_url = '/vk-save-email/'
+
+    def form_valid(self, form):
+        # Сохраняем адрес электронной почты в контексте
+        self.request.session['email'] = form.cleaned_data['email']
+
+         # Получаем backend и strategy
+        for k in self.request.session.keys():
+            print(k, self.request.session[k])
+        backend = load_backend(self.request.session['partial_pipeline']['backend'])
+        strategy = load_strategy()
+
+        # Вызываем следующий этап Pipeline
+        next_url = backend.strategy.redirect(next=self.success_url, backend=backend, **self.kwargs)
+        return HttpResponseRedirect(next_url)

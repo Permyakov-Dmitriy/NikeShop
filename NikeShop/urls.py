@@ -19,7 +19,8 @@ from social_django import urls
 
 from main.views import Home, ProfileView, FavoriteView, FavoriteDeleteView
 
-from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView, google_callback, google_login
+from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView, VKEmailView
+from auth_nike.pipeline import save_email
 
 from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
@@ -48,11 +49,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('registration/', RegView.as_view(), name='reg'),
     path('auth/', AuthView.as_view()),
+    path('vk-email/', VKEmailView.as_view(), name='VKEmail'),
+    path('vk-save-email/', save_email, name='VKSaveEmail'),
     path('profile/', include(url_profile)),
     path('password-reset/', include(url_reset_password)),
     path('shop/', include(url_shop)),
     path('social-auth/', include(urls, namespace='social')),
-    path('login/google/', google_login, name='google-login'),
-    path('login/google/callback/', google_callback, name='google-callback'),
-
 ]
