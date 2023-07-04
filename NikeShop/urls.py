@@ -50,7 +50,6 @@ urlpatterns = [
     path('registration/', RegView.as_view(), name='reg'),
     path('auth/', AuthView.as_view()),
     path('vk-email/', VKEmailView.as_view(), name='VKEmail'),
-    path('vk-save-email/', save_email, name='VKSaveEmail'),
     path('profile/', include(url_profile)),
     path('password-reset/', include(url_reset_password)),
     path('shop/', include(url_shop)),

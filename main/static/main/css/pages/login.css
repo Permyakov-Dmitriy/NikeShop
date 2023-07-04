@@ -81,11 +81,28 @@
     margin: 25px 0;
 }
 
-.google a{
-    background-color: #e94235;
+.btn-social-auth{
     text-decoration: none;
     color: white;
-    padding: 10px 20px;
-    font-size: 14px;
-    margin: 20px 0 0 0;
+    padding: 7px 12px;
+    font-size: 22px;
+}
+
+.google a{
+    background-color: #e94235;
+}
+
+.vk a{
+    background-color: #0277ff;
+}
+
+.github a{
+    background-color: #161b22;
+}
+
+.social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }

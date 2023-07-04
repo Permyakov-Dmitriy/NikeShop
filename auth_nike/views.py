@@ -8,8 +8,6 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db import IntegrityError
 from django.urls import reverse_lazy
 
-from social_django.utils import load_backend, load_strategy
-
 from .models import NikeUser
 from .forms import UserNikeReg, \
                     UserNikeAuth, \
@@ -175,18 +173,14 @@ class ChangeEmail(View):
 class VKEmailView(FormView):
     template_name = 'auth_nike/VKEmail.html'
     form_class = VKEmailForm
-    success_url = '/vk-save-email/'
+    success_url = '/social-auth/complete/vk-oauth2'
 
     def form_valid(self, form):
         # Сохраняем адрес электронной почты в контексте
         self.request.session['email'] = form.cleaned_data['email']
 
-         # Получаем backend и strategy
-        for k in self.request.session.keys():
-            print(k, self.request.session[k])
-        backend = load_backend(self.request.session['partial_pipeline']['backend'])
-        strategy = load_strategy()
+        print('data', form.cleaned_data['email'])
 
-        # Вызываем следующий этап Pipeline
-        next_url = backend.strategy.redirect(next=self.success_url, backend=backend, **self.kwargs)
-        return HttpResponseRedirect(next_url)
+        print('sesion', self.request.session['email'])
+
+        return super().form_valid(form)

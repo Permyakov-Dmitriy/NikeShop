@@ -185,6 +185,7 @@ SOCIAL_AUTH_PIPELINE = [
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -197,3 +198,6 @@ LOGIN_REDIRECT_URL = 'https://mysite.com:8000/profile/'
 SOCIAL_AUTH_VK_OAUTH2_KEY = '51694628'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'OquHQpUoan282TcH5Fiz'
 
+
+SOCIAL_AUTH_GITHUB_KEY = 'Iv1.616fd15c4dac8676'
+SOCIAL_AUTH_GITHUB_SECRET = '59d2667eefac9c86098311ce895e51d26fcfa053'
