@@ -52,7 +52,7 @@ class ProductView(LoginRequiredMixin, TemplateView):
 
         product_ids = [item['product_id'] for item in recomend_prod_on_fav]
 
-        recomend_list_products = Product.objects.filter(id__in=product_ids)
+        recomend_list_products = Product.objects.filter(id__in=product_ids)[:3]
 
         try:
             favorite = FavoriteModel.objects.get(product_id=product, user_id=user)

@@ -20,7 +20,6 @@ from social_django import urls
 from main.views import Home, ProfileView, FavoriteView, FavoriteDeleteView
 
 from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView, VKEmailView
-from auth_nike.pipeline import save_email
 
 from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
