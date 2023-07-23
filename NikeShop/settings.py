@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from stripe_keys import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'main',
     'auth_nike',
     'shop_nike',
+    'payment',
     'social_django'
 ]
 
@@ -200,3 +202,9 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = 'OquHQpUoan282TcH5Fiz'
 
 SOCIAL_AUTH_GITHUB_KEY = 'Iv1.616fd15c4dac8676'
 SOCIAL_AUTH_GITHUB_SECRET = '59d2667eefac9c86098311ce895e51d26fcfa053'
+
+
+# Настроечные параметры Stripe
+STRIPE_PUBLISHABLE_KEY = _STRIPE_PUBLISH
+STRIPE_SECRET_KEY = _STRIPE_SECRET 
+STRIPE_API_VERSION = '2022-11-15'

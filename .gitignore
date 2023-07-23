@@ -1,3 +1,5 @@
 settings.py
 
 celerybeat-schedule*
+
+stripe_keys.py
