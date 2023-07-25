@@ -9,6 +9,45 @@
 
 <body>
     {% include 'main/header.html' %}
+
+    {% include 'main/menu.html' %}
+
+    <div class="conteiner-bucket">
+        <div class="bucket">
+            <div class="bag bucket-block">
+                <h1>Bag</h1>
+
+                <div class="items-bag">
+                    <div class="item-bag">
+                        <div class="image-bag">
+                            <img src="{% static 'main/images/nike-zegama.webp' %}" width="150px">
+                        </div>
+
+                        <div class="content-bag">
+                            <h2 class="name-item">
+                                Nike Court Vision Mid Winter
+                            </h2>
+                            <h3>
+                                Men's Shoes
+                            </h3>
+                            <h3>
+                                Black/Phantom/Black
+                            </h3>
+                        </div>
+
+                        <div class="price">
+                            <h2>$92.00</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary bucket-block">
+                <h1>Summary</h1>
+            </div>
+        </div>
+    </div>
+
     {% include 'main/footer.html' %}
 </body>
 </html>

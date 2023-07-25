@@ -1,0 +1,47 @@
+.conteiner-bucket{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.bucket{
+    width: 75%;
+    display: flex;
+    justify-content:space-between;
+}
+
+.bucket-block{
+    height: 500px;
+}
+
+.bag{
+    width: 63%;
+}
+
+.summary{
+    width: 35%;
+}
+
+.items-bag{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.bucket-block h1{
+    font-size: 24px;
+}
+
+.item-bag{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.content-bag{
+    width: 100%;
+}
+
+.item-bag h2{
+    font-weight: 500;
+}
