@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-from stripe_keys import *
+# from stripe_keys import STRIPE_PUBLISH, STRIPE_SECRET
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -205,6 +205,6 @@ SOCIAL_AUTH_GITHUB_SECRET = '59d2667eefac9c86098311ce895e51d26fcfa053'
 
 
 # Настроечные параметры Stripe
-STRIPE_PUBLISHABLE_KEY = _STRIPE_PUBLISH
-STRIPE_SECRET_KEY = _STRIPE_SECRET 
-STRIPE_API_VERSION = '2022-11-15'
+# STRIPE_PUBLISHABLE_KEY = STRIPE_PUBLISH
+# STRIPE_SECRET_KEY = STRIPE_SECRET 
+# STRIPE_API_VERSION = '2022-11-15'
