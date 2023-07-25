@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'auth_nike',
     'shop_nike',
     'payment',
+    'orders',
     'social_django'
 ]
 

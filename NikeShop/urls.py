@@ -23,6 +23,12 @@ from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForg
 
 from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
+from orders.views import BucketView
+
+
+url_orders = [
+    path('bucket/', BucketView.as_view(), name='bucket')
+]
 
 url_shop = [
     path('product/', ProductView.as_view()),
@@ -53,4 +59,5 @@ urlpatterns = [
     path('password-reset/', include(url_reset_password)),
     path('shop/', include(url_shop)),
     path('social-auth/', include(urls, namespace='social')),
+    path('orders/', include((url_orders, 'orders')))
 ]

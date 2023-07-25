@@ -1,20 +1,18 @@
 from django.template.response import TemplateResponse
 from django.views.generic import View, FormView
 from django.http.response import HttpResponseRedirect
+
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 from django.contrib.auth.mixins import UserPassesTestMixin
+
 from django.db import IntegrityError
+
 from django.urls import reverse_lazy
 
 from .models import NikeUser
-from .forms import UserNikeReg, \
-                    UserNikeAuth, \
-                    UserSetNewPasswordForm, \
-                    UserForgotPasswordForm, \
-                    ChangeEmailFrom, \
-                    VKEmailForm
+from .forms import *
 
 
 class RegView(UserPassesTestMixin, View):
