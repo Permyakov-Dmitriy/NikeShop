@@ -45,13 +45,19 @@ class ProductView(LoginRequiredMixin, TemplateView):
         except ObjectDoesNotExist:
             raise Http404()
         
+        # Рекомендации основанные на самых за лайканых продукциях
+        
+        # Фильтруем продукты имеющие лайки по гендеру
         fav_fltr_gender = FavoriteModel.objects.filter(product_id__gender=product.gender)
 
+        # Группируем по product_id и агрегируем по количеству лайков затем сортируем от большего к меньшему
         recomend_prod_on_fav = fav_fltr_gender.values('product_id') \
         .annotate(total_products=Count('user_id')).order_by('-total_products')
 
+        # Массив для последующего формирования списка самых залайканчх продуктов
         product_ids = [item['product_id'] for item in recomend_prod_on_fav]
 
+        # Выбираем только те продукты которые есть в массиве и только первые три 
         recomend_list_products = Product.objects.filter(id__in=product_ids)[:3]
 
         try:
