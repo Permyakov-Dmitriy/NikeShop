@@ -44,13 +44,19 @@
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
-    background-color: #111111;
-    color: #fff;
     margin-top: 20px;
     width: 100%;
     font-size: 18px;
     padding: 20px 20px;
     border-radius: 50px;
+}
+.product-btn-fav{
+    background-color: #ffffff;
+    color:#111111
+}
+.product-btn-add-bag{
+    background-color: #111111;
+    color: white;
 }
 .detail-info button:hover{
     cursor: pointer;

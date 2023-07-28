@@ -13,12 +13,16 @@
         {{ prod.description }}
     </p>
 
+    <button type="submit" class="product-btn-add-bag">
+        Add to bag
+    </button>
+
     {% if not isFav %}
         <form action="fav/" method="post">
             {% csrf_token %}
             <input name="product_id" type="hidden" value="{{ prod.id }}">
             <input name="user_id" type="hidden" value="{{ user.id }}">
-            <button type="submit">
+            <button type="submit" class="product-btn-fav">
                 Favorite
                 <i style="margin-left: 10px;" class="bi bi-heart"></i>
             </button>
@@ -28,9 +32,9 @@
             {% csrf_token %}
             <input type="hidden" name="fav_id" value="{{ fav_id }}">
             <input type="hidden" name="product_id" value="{{ prod.id }}">
-            <button type="submit">
-            Favorites
-            <i style="margin-left: 10px; color:red;" class="bi bi-heart-fill"></i>
+            <button type="submit" class="product-btn-fav">
+                Favorites
+                <i style="margin-left: 10px; color:red;" class="bi bi-heart-fill"></i>
             </button>
         </form>
     {% endif %}
