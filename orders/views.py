@@ -43,8 +43,13 @@ class BucketAddView(View):
         form = BucketForm(req.POST)
 
         if form.is_valid():
-            model = BucketModel()
             product_id = form.cleaned_data['product_id']
+            bucket = BucketModel.objects.filter(product_id = product_id)
+
+            if len(bucket) == 9:
+                return HttpResponseRedirect(f'/shop/product/?id={product_id}')
+
+            model = BucketModel()
 
             model.user_id = NikeUser.objects.get(id=form.cleaned_data['user_id'])
             model.product_id = Product.objects.get(id=product_id)

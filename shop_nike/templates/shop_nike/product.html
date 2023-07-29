@@ -13,14 +13,21 @@
         {{ prod.description }}
     </p>
 
-    <form action="/orders/add-on-bucket/" method="post">
-        {% csrf_token %}
-        <input name="product_id" type="hidden" value="{{ prod.id }}">
-        <input name="user_id" type="hidden" value="{{ user.id }}">
+    {% if not limit %}
+        <form action="/orders/add-on-bucket/" method="post">
+            {% csrf_token %}
+            <input name="product_id" type="hidden" value="{{ prod.id }}">
+            <input name="user_id" type="hidden" value="{{ user.id }}">
+            <button type="submit" class="product-btn-add-bag">
+                Add to bag
+            </button>
+        </form>
+    {% else %}
         <button type="submit" class="product-btn-add-bag">
-            Add to bag
+            Limit
+            <i style="margin-left: 10px;" class="bi bi-lock"></i>
         </button>
-    </form>
+    {% endif %}
 
     {% if not isFav %}
         <form action="fav/" method="post">

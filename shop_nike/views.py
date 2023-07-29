@@ -7,6 +7,7 @@ from django.db.models import Count
 from .models import Product
 from main.models import FavoriteModel
 from auth_nike.models import NikeUser
+from orders.models import BucketModel
 
 
 class ShopView(LoginRequiredMixin, TemplateView):
@@ -45,6 +46,9 @@ class ProductView(LoginRequiredMixin, TemplateView):
         except ObjectDoesNotExist:
             raise Http404()
         
+        bucket = BucketModel.objects.filter(product_id = product_id)
+        limit = len(bucket) == 9
+        
         # Рекомендации основанные на самых за лайканых продукциях
         
         # Фильтруем продукты имеющие лайки по гендеру
@@ -68,6 +72,7 @@ class ProductView(LoginRequiredMixin, TemplateView):
             fav_id = None
             isFav = False
 
+        context['limit'] = limit
         context['list_recomend'] = recomend_list_products
         context['isFav'] = isFav
         context['fav_id'] = fav_id
