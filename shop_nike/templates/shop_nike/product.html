@@ -13,9 +13,14 @@
         {{ prod.description }}
     </p>
 
-    <button type="submit" class="product-btn-add-bag">
-        Add to bag
-    </button>
+    <form action="fav/" method="post">
+        {% csrf_token %}
+        <input name="product_id" type="hidden" value="{{ prod.id }}">
+        <input name="user_id" type="hidden" value="{{ user.id }}">
+        <button type="submit" class="product-btn-add-bag">
+            Add to bag
+        </button>
+    </form>
 
     {% if not isFav %}
         <form action="fav/" method="post">

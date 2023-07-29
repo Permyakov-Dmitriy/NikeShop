@@ -1,11 +1,17 @@
-from typing import Any, Dict
+from django.views.generic import TemplateView, View
 
-from django.views.generic import TemplateView
+from django.db.models import Count
+
+from django.http.response import HttpResponseRedirect
 
 from main.models import FavoriteModel
 from shop_nike.models import Product
+from .models import BucketModel
 
-from django.db.models import Count
+from .forms import BucketForm
+
+from auth_nike.models import NikeUser
+from shop_nike.models import Product
 
 
 class BucketView(TemplateView):
@@ -30,3 +36,19 @@ class BucketView(TemplateView):
         context['list_recomend'] = recomend_list_products
 
         return context
+    
+
+class BucketAddView(View):
+    def post(self, req, *args, **kwargs):
+        form = BucketForm(req.POST)
+
+        if form.is_valid():
+            model = BucketModel()
+            product_id = form.cleaned_data['product_id']
+
+            model.user_id = NikeUser.objects.get(id=form.cleaned_data['user_id'])
+            model.product_id = Product.objects.get(id=product_id)
+
+            model.save()
+
+        return HttpResponseRedirect(f'/shop/product/?id={product_id}')
