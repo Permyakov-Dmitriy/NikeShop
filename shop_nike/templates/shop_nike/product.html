@@ -13,7 +13,7 @@
         {{ prod.description }}
     </p>
 
-    <form action="fav/" method="post">
+    <form action="/orders/add-on-bucket/" method="post">
         {% csrf_token %}
         <input name="product_id" type="hidden" value="{{ prod.id }}">
         <input name="user_id" type="hidden" value="{{ user.id }}">
