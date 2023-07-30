@@ -46,11 +46,14 @@ class BucketAddView(View):
             product_id = form.cleaned_data['product_id']
             user_id = form.cleaned_data['user_id']
 
+            # Количество оределенного продукта котрый в корзине
             bucket = Basket.objects.filter(product_id = product_id)
 
+            # Если кол-во 9 то редирект обратно на страницу продукта
             if len(bucket) == 9:
                 return HttpResponseRedirect(f'/shop/product/?id={product_id}')
 
+            # Создаем обьект модели и сохраняем
             model = Basket()
 
             model.user_id = NikeUser.objects.get(id=user_id)
