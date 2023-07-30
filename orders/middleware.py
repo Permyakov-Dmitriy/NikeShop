@@ -6,7 +6,8 @@ class CheckBasketMiddleware:
         self.get_response = get_response
 
     def process_response(self, request, response):
-        response.context_data['custom_data'] = bool(Basket.objects.filter(user_id=NikeUser.objects.get(id=response.context_data['user_id'])))
+        user = NikeUser.objects.get(email=request.user)
+        response.context_data['full_basket'] = bool(Basket.objects.filter(user_id=user.id))
         print(response.context_data)
         return response
 
