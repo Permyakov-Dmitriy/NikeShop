@@ -9,12 +9,12 @@ from .models import FavoriteModel
 from .forms import FavoriteForm, FavoriteDeleteForm
 
 
-# Главная страница
 class Home(TemplateView):
+    ''' Главная страница '''
     template_name = 'main/index.html'
 
-# Профиль с проверкой на авторизацию пользователя
 class ProfileView(LoginRequiredMixin, TemplateView):
+    ''' Профиль с проверкой на авторизацию пользователя '''
     template_name = 'main/profile.html'
     login_url = '/auth'
 
@@ -29,8 +29,8 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
         return context
 
-# Добавление в избранное
 class FavoriteView(View):
+    ''' Добавление в избранное '''
     def post(self, req, *args, **kwargs):
         form = FavoriteForm(req.POST)
 
@@ -53,7 +53,7 @@ class FavoriteDeleteView(View):
         if form.is_valid():
             product_id = form.cleaned_data['product_id']
             fav_id = form.cleaned_data['fav_id']
-            
+
             # Достаем обьект пользователя для удаления из избранного
             user = NikeUser.objects.get(id=self.request.user.id)
 
