@@ -51,8 +51,6 @@ class BucketAddView(View):
             if len(bucket) == 9:
                 return HttpResponseRedirect(f'/shop/product/?id={product_id}')
 
-            self.request['full_basket'] = Basket.objects.filter(user_id=user_id)
-
             model = Basket()
 
             model.user_id = NikeUser.objects.get(id=user_id)
