@@ -17,9 +17,11 @@ from .forms import *
 
 class RegView(UserPassesTestMixin, View):
     def test_func(self):
+        ''' Доступ только для не авторизованных '''
         return not self.request.user.is_authenticated
     
     def handle_no_permission(self):
+        ''' Редирект на гланую страницу если не прошли проверку '''
         return HttpResponseRedirect('/')
 
     def get(self, req, *args, **kwargs):
@@ -30,17 +32,20 @@ class RegView(UserPassesTestMixin, View):
 
         if form.is_valid():
             model = NikeUser()
+            # Для определения ошибок и отпраки в последующем
             err = False
 
             password = form.cleaned_data['password']
             email = form.cleaned_data['email']
             
+            # Назначение полей для регистрации пользователя
             model.first_name = form.cleaned_data['first_name']
             model.last_name = form.cleaned_data['last_name']
             model.email = email
             model.password = make_password(password)
             model.birth_day = form.cleaned_data['birth_day']
 
+            # Пытаемся сохранить пользователя если с такой почтой нет
             try:
                 model.save()
             except IntegrityError:
@@ -53,22 +58,26 @@ class RegView(UserPassesTestMixin, View):
         else:
             err = 'Заполните все поля'
 
+        # В случае ошибки возвращаемся обратно на строницу регистрации с сообщением ошибки
         if err:
             return TemplateResponse(req, 'auth_nike/register.html', {'err': err})
         
         return HttpResponseRedirect('/profile')
-    
+
 class LogoutView(View):
     def post(self, req, *args, **kwargs):
+        ''' Выходим из учетной записи '''
         logout(req)
 
         return HttpResponseRedirect('/')
     
 class AuthView(UserPassesTestMixin, View):
     def test_func(self):
+        ''' Доступ только для не авторизованных '''
         return not self.request.user.is_authenticated
     
     def handle_no_permission(self):
+        ''' Редирект на гланую страницу если не прошли проверку '''
         return HttpResponseRedirect('/')
 
     def get(self, req, *args, **kwargs):
@@ -76,15 +85,18 @@ class AuthView(UserPassesTestMixin, View):
     
     def post(self, req, *args, **kwargs):
         form = UserNikeAuth(req.POST)
+        # Для определения ошибок и отпраки в последующем
         err = False
 
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
 
+            # Проверка существования пользователя
             try:
                 user = NikeUser.objects.get(email=email)
 
+                # Проверка пароля
                 if user.check_password(password):
                     login(req, user, backend='django.contrib.auth.backends.ModelBackend')
                 else:
@@ -176,9 +188,5 @@ class VKEmailView(FormView):
     def form_valid(self, form):
         # Сохраняем адрес электронной почты в контексте
         self.request.session['email'] = form.cleaned_data['email']
-
-        print('data', form.cleaned_data['email'])
-
-        print('sesion', self.request.session['email'])
 
         return super().form_valid(form)
