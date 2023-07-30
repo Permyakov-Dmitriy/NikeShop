@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bucket
+from .models import Basket
 
 
-admin.site.register(Bucket)
+admin.site.register(Basket)
