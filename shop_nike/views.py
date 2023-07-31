@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.db.models import Count
 
+
 from .models import Product
 from main.models import FavoriteModel
 from auth_nike.models import NikeUser
@@ -55,8 +56,11 @@ class ProductView(LoginRequiredMixin, TemplateView):
             raise Http404()
         
         # Берем продукт из карзины для установки лимита на добавления
-        bucket = Basket.objects.get(product_id = product_id, user_id=self.request.user.id)
-        limit = bucket.quantity == 9
+        try:
+            bucket = Basket.objects.get(product_id = product_id, user_id=self.request.user.id)
+            limit = bucket.quantity == 9
+        except ObjectDoesNotExist:
+            limit = False
         
         # Рекомендации основанные на самых за лайканых продукциях
         
