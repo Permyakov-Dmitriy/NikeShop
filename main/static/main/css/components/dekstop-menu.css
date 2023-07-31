@@ -79,6 +79,9 @@
     border-radius: 50%;
     transition: .3s;
 }
+.dekstop-menu-icons a:visited{
+	color: black;
+}
 .dekstop-menu-search:hover input{
     background: #d2d2d2;
     transition: .3s;
