@@ -55,8 +55,8 @@ class ProductView(LoginRequiredMixin, TemplateView):
             raise Http404()
         
         # Берем продукт из карзины для установки лимита на добавления
-        bucket = Basket.objects.filter(product_id = product_id)
-        limit = len(bucket) == 9
+        bucket = Basket.objects.get(product_id = product_id, user_id=self.request.user.id)
+        limit = bucket.quantity == 9
         
         # Рекомендации основанные на самых за лайканых продукциях
         
