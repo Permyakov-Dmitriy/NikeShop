@@ -63,7 +63,4 @@ class BucketAddView(View):
                 product_in_basket.save()
 
 
-            print(vars(product_in_basket), created)
-
-
         return HttpResponseRedirect(f'/shop/product/?id={product_id}')
