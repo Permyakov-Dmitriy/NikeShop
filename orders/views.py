@@ -4,6 +4,8 @@ from django.db.models import Count, F
 
 from django.http.response import HttpResponseRedirect
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from main.models import FavoriteModel
 from shop_nike.models import Product
 from auth_nike.models import NikeUser
@@ -12,8 +14,9 @@ from .models import Basket
 from .forms import BasketForm
 
 
-class BucketView(TemplateView):
+class BucketView(LoginRequiredMixin, TemplateView):
     template_name = 'orders/bucket.html'
+    login_url = '/auth'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,7 +39,9 @@ class BucketView(TemplateView):
         return context
     
 
-class BucketAddView(View):
+class BucketAddView(LoginRequiredMixin, View):
+    login_url = '/auth'
+
     def post(self, req, *args, **kwargs):
         form = BasketForm(req.POST)
 
