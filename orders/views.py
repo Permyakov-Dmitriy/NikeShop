@@ -6,12 +6,10 @@ from django.http.response import HttpResponseRedirect
 
 from main.models import FavoriteModel
 from shop_nike.models import Product
+from auth_nike.models import NikeUser
 from .models import Basket
 
 from .forms import BasketForm
-
-from auth_nike.models import NikeUser
-from shop_nike.models import Product
 
 
 class BucketView(TemplateView):
