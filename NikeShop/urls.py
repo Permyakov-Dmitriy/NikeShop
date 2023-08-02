@@ -23,13 +23,8 @@ from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForg
 
 from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
-from orders.views import BucketView, BucketAddView
+from orders.urls import url_orders
 
-
-url_orders = [
-    path('bucket/', BucketView.as_view(), name='bucket'),
-    path('add-on-bucket/', BucketAddView.as_view())
-]
 
 url_shop = [
     path('product/', ProductView.as_view()),
