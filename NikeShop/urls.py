@@ -17,13 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from social_django import urls
 
-from main.views import Home, ProfileView, FavoriteView, FavoriteDeleteView
-
-from auth_nike.views import RegView, LogoutView, AuthView, ChangeEmail, UserForgotPasswordView, UserPasswordResetConfirmView, VKEmailView
-
+from main.views import Home, FavoriteView, FavoriteDeleteView
+from auth_nike.views import RegView, AuthView, VKEmailView
 from shop_nike.views import ShopView, ProductView, ProductsSearchView
 
 from orders.urls import url_orders
+from auth_nike.urls import url_profile, url_reset_password
 
 
 url_shop = [
@@ -32,17 +31,6 @@ url_shop = [
     path('product/fav-del/', FavoriteDeleteView.as_view()),
     path('find/', ProductsSearchView.as_view()),
     path('', ShopView.as_view(), name='shop'),
-]
-
-url_reset_password = [
-    path('', UserForgotPasswordView.as_view(), name='password_reset'),
-    path('set-new-password/<uidb64>/<token>/', UserPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-]
-
-url_profile = [
-    path('', ProfileView.as_view()),
-    path('logout/', LogoutView.as_view()),
-    path('change-email/', ChangeEmail.as_view())
 ]
 
 urlpatterns = [
