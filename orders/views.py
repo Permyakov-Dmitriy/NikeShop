@@ -15,6 +15,7 @@ from .forms import BasketForm
 
 
 class BucketView(LoginRequiredMixin, TemplateView):
+    ''' Корзина покупок '''
     template_name = 'orders/bucket.html'
     login_url = '/auth'
 
@@ -40,6 +41,7 @@ class BucketView(LoginRequiredMixin, TemplateView):
     
 
 class BucketAddView(LoginRequiredMixin, View):
+    ''' Удаление из корзины покупок  '''
     login_url = '/auth'
 
     def post(self, req, *args, **kwargs):

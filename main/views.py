@@ -47,6 +47,7 @@ class FavoriteView(View):
     
 
 class FavoriteDeleteView(View):
+    ''' Удаление из избранных '''
     def post(self, req, *args, **kwargs):
         form = FavoriteDeleteForm(req.POST)
 
