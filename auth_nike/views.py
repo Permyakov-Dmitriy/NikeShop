@@ -65,8 +65,8 @@ class RegView(UserPassesTestMixin, View):
         return HttpResponseRedirect('/profile')
 
 class LogoutView(View):
+    ''' Выходим из учетной записи '''
     def post(self, req, *args, **kwargs):
-        ''' Выходим из учетной записи '''
         logout(req)
 
         return HttpResponseRedirect('/')
@@ -149,6 +149,7 @@ class UserPasswordResetConfirmView(PasswordResetConfirmView):
     
 
 class ChangeEmail(View):
+    ''' Изменение почты учетной записи '''
     def get(self, req, *args, **kwargs):
         return TemplateResponse(req, 'auth_nike/change_password.html')
     
@@ -181,6 +182,7 @@ class ChangeEmail(View):
 
 
 class VKEmailView(FormView):
+    ''' Почта для авторизации через vk '''
     template_name = 'auth_nike/VKEmail.html'
     form_class = VKEmailForm
     success_url = '/social-auth/complete/vk-oauth2'

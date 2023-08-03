@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from social_django import urls
 
-from main.views import Home, FavoriteView, FavoriteDeleteView
+from main.views import Home
 from auth_nike.views import RegView, AuthView, VKEmailView
 
 from orders.urls import url_orders
