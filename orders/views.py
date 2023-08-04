@@ -44,6 +44,7 @@ class BasketView(LoginRequiredMixin, TemplateView):
         context['list_recomend'] = recomend_list_products
         context['products'] = all_products_on_basket
         context['fav_products'] = fav_on_basket
+        context['list_quantity'] = [i for i in range(1, 10)]
 
         return context
     
