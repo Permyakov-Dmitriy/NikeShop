@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, View
 
-from django.db.models import Count, F
+from django.db.models import Count
 
 from django.http.response import HttpResponseRedirect
 
@@ -14,14 +14,14 @@ from .models import Basket
 from .forms import BasketForm
 
 
-class BucketView(LoginRequiredMixin, TemplateView):
+class BasketView(LoginRequiredMixin, TemplateView):
     ''' Корзина покупок '''
     template_name = 'orders/bucket.html'
     login_url = '/auth'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-            
+
         # Все лайки
         all_fav = FavoriteModel.objects.all()
 
@@ -35,12 +35,14 @@ class BucketView(LoginRequiredMixin, TemplateView):
         # Выбираем только те продукты которые есть в массиве и только первые три 
         recomend_list_products = Product.objects.filter(id__in=product_ids)[:3]
 
+        print(Bu)
+
         context['list_recomend'] = recomend_list_products
 
         return context
     
 
-class BucketAddView(LoginRequiredMixin, View):
+class BascketAddView(LoginRequiredMixin, View):
     ''' Удаление из корзины покупок  '''
     login_url = '/auth'
 

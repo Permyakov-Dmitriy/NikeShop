@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import BucketView, BucketAddView
+from .views import BasketView, BascketAddView
 
 
 url_orders = [
-    path('bucket/', BucketView.as_view(), name='bucket'),
-    path('add-on-bucket/', BucketAddView.as_view())
+    path('bucket/', BasketView.as_view(), name='bucket'),
+    path('add-on-bucket/', BascketAddView.as_view())
 ]
