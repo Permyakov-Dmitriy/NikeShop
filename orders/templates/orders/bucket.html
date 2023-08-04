@@ -18,6 +18,50 @@
                 <h1>Bag</h1>
 
                 <div class="items-bag">
+                    {% for product in products %}
+                        <div class="item-bag">
+                            <div class="image-bag">
+                                <img src="{% static 'main/images/' %}{{ product.product_id.image }}" width="150px">
+                            </div>
+
+                            <div class="content-bag">
+                                <h2 class="name-item">
+                                    {{ product.product_id.title_product }}
+                                </h2>
+                                <h3>
+                                    {{ product.product_id.gender }} {{ product.product_id.category }}
+                                </h3>
+                                <h3>
+                                    Black/Phantom/Black
+                                </h3>
+                                <h3>
+                                    Quantity 
+
+                                    <select id="quantity-bag">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                </h3>
+
+                                <div class="bag-item-icons">
+                                    <a href="#"><i class="bi bi-suit-heart"></i></a>
+                                    <a href="#"><i class="bi bi-trash3"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="price">
+                                <h2>${{ product.product_id.price }}</h2>
+                            </div>
+                        </div>
+                    {% endfor %}
+
                     <div class="item-bag">
                         <div class="image-bag">
                             <img src="{% static 'main/images/nike-zegama.webp' %}" width="150px">
