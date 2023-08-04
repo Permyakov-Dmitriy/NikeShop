@@ -51,7 +51,11 @@
                                 </h3>
 
                                 <div class="bag-item-icons">
-                                    <a href="#"><i class="bi bi-suit-heart"></i></a>
+                                    {% if product.product_id in fav_products %}
+                                        <a href="#" style="color:red"><i class="bi bi-suit-heart-fill"></i></a>
+                                    {% else %}
+                                        <a href="#"><i class="bi bi-suit-heart"></i></a>
+                                    {% endif %}
                                     <a href="#"><i class="bi bi-trash3"></i></a>
                                 </div>
                             </div>

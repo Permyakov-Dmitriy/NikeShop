@@ -35,10 +35,15 @@ class BasketView(LoginRequiredMixin, TemplateView):
         # Выбираем только те продукты которые есть в массиве и только первые три 
         recomend_list_products = Product.objects.filter(id__in=product_ids)[:3]
 
-        all_products_on_basket = Basket.objects.filter(user_id=self.request.user.id) 
+        all_products_on_basket = Basket.objects.filter(user_id=self.request.user.id)
+
+        products = [i.product_id for i in all_products_on_basket]
+
+        fav_on_basket = [f.product_id for f in FavoriteModel.objects.filter(product_id__in=products, user_id=self.request.user.id)]
 
         context['list_recomend'] = recomend_list_products
         context['products'] = all_products_on_basket
+        context['fav_products'] = fav_on_basket
 
         return context
     
