@@ -3,17 +3,12 @@
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    padding-bottom: 40px;
 }
 
 .bucket{
     width: 75%;
     display: flex;
     justify-content:space-between;
-}
-
-.bucket-block{
-    height: 500px;
 }
 
 .bag{
