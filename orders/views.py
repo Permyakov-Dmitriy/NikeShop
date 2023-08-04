@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, View
 
-from django.db.models import Count
+from django.db.models import Count, Sum
 
 from django.http.response import HttpResponseRedirect
 
@@ -12,6 +12,8 @@ from auth_nike.models import NikeUser
 from .models import Basket
 
 from .forms import BasketForm
+
+from functools import reduce
 
 
 class BasketView(LoginRequiredMixin, TemplateView):
@@ -41,10 +43,13 @@ class BasketView(LoginRequiredMixin, TemplateView):
 
         fav_on_basket = [f.product_id for f in FavoriteModel.objects.filter(product_id__in=products, user_id=self.request.user.id)]
 
+        total_sum = reduce(lambda a, b: a.quantity * a.product_id.price + b.quantity * b.product_id.price, all_products_on_basket)
+
         context['list_recomend'] = recomend_list_products
         context['products'] = all_products_on_basket
         context['fav_products'] = fav_on_basket
         context['list_quantity'] = [i for i in range(1, 10)]
+        context['total'] = total_sum
 
         return context
     
