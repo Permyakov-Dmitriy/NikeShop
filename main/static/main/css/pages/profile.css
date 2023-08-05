@@ -84,3 +84,8 @@
     gap: 30px;
     flex-wrap: wrap;
 }
+
+.empty-fav-profile{
+    height: 50px;
+    margin-top: 20px;
+}
