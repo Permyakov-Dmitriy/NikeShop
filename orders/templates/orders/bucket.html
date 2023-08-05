@@ -17,53 +17,59 @@
             <div class="bag bucket-block">
                 <h1>Bag</h1>
 
-                <div class="items-bag">
-                    {% for product in products %}
-                        <div class="item-bag">
-                            <div class="image-bag">
-                                <img src="{% static 'main/images/' %}{{ product.product_id.image }}" width="150px">
-                            </div>
+                {% if products %}
+                    <div class="items-bag">
+                        {% for product in products %}
+                            <div class="item-bag">
+                                <div class="image-bag">
+                                    <img src="{% static 'main/images/' %}{{ product.product_id.image }}" width="150px">
+                                </div>
 
-                            <div class="content-bag">
-                                <h2 class="name-item">
-                                    {{ product.product_id.title_product }}
-                                </h2>
-                                <h3>
-                                    {{ product.product_id.gender }} {{ product.product_id.category }}
-                                </h3>
-                                <h3>
-                                    Black/Phantom/Black
-                                </h3>
-                                <h3>
-                                    Quantity 
+                                <div class="content-bag">
+                                    <h2 class="name-item">
+                                        {{ product.product_id.title_product }}
+                                    </h2>
+                                    <h3>
+                                        {{ product.product_id.gender }} {{ product.product_id.category }}
+                                    </h3>
+                                    <h3>
+                                        Black/Phantom/Black
+                                    </h3>
+                                    <h3>
+                                        Quantity 
 
-                                    <select id="quantity-bag">
-                                        {% for i in list_quantity %}
-                                            {% if product.quantity == i %}
-                                                <option value="{{i}}" selected>{{i}}</option>
-                                            {% else %}
-                                                <option value="{{i}}">{{i}}</option>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </select>
-                                </h3>
+                                        <select id="quantity-bag">
+                                            {% for i in list_quantity %}
+                                                {% if product.quantity == i %}
+                                                    <option value="{{i}}" selected>{{i}}</option>
+                                                {% else %}
+                                                    <option value="{{i}}">{{i}}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </h3>
 
-                                <div class="bag-item-icons">
-                                    {% if product.product_id in fav_products %}
-                                        <a href="#" style="color:red"><i class="bi bi-suit-heart-fill"></i></a>
-                                    {% else %}
-                                        <a href="#"><i class="bi bi-suit-heart"></i></a>
-                                    {% endif %}
-                                    <a href="#"><i class="bi bi-trash3"></i></a>
+                                    <div class="bag-item-icons">
+                                        {% if product.product_id in fav_products %}
+                                            <a href="#" style="color:red"><i class="bi bi-suit-heart-fill"></i></a>
+                                        {% else %}
+                                            <a href="#"><i class="bi bi-suit-heart"></i></a>
+                                        {% endif %}
+                                        <a href="#"><i class="bi bi-trash3"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="price">
+                                    <h2>${{ product.product_id.price }}</h2>
                                 </div>
                             </div>
-
-                            <div class="price">
-                                <h2>${{ product.product_id.price }}</h2>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class='empty-basket'>
+                        Empty
+                    </div>
+                {% endif %}
             </div>
 
             <div class="summary bucket-block">
@@ -72,7 +78,11 @@
                 <div class="content-summary">
                     <div>
                         <h2>Subtotal</h2>
-                        <h2>${{ total }}</h2>
+                        {% if total %}
+                            <h2>${{ total }}</h2>
+                        {% else %}
+                            <h2>-</h2>
+                        {% endif %}
                     </div>
                     <div>
                         <h2>Estimated Shipping & Handling</h2>
@@ -85,7 +95,11 @@
 
                     <div class="total">
                         <h2>Total</h2>
-                        <h2>${{ total }}</h2>
+                        {% if total %}
+                            <h2>${{ total }}</h2>
+                        {% else %}
+                            <h2>-</h2>
+                        {% endif %}
                     </div>
 
                     <button class="checkout">Checkout</button>

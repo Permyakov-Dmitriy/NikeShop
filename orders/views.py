@@ -43,7 +43,10 @@ class BasketView(LoginRequiredMixin, TemplateView):
 
         fav_on_basket = [f.product_id for f in FavoriteModel.objects.filter(product_id__in=products, user_id=self.request.user.id)]
 
-        total_sum = reduce(lambda a, b: a.quantity * a.product_id.price + b.quantity * b.product_id.price, all_products_on_basket)
+        if all_products_on_basket :
+            total_sum = reduce(lambda a, b: a.quantity * a.product_id.price + b.quantity * b.product_id.price, all_products_on_basket)
+        else:
+            total_sum = None
 
         context['list_recomend'] = recomend_list_products
         context['products'] = all_products_on_basket
